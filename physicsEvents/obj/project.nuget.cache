@@ -1,10 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "zhg71fpZ01096r34H5T6epARaGMbu6bupbOXgs+RpyWxQaln2eBaSU4gPKMZZTLd50xQKi564EeyuWRvyrG83A==",
+  "dgSpecHash": "x+mOXgtOY0FJXDwW2YMSBE+qYr/J+nf4Ywkp52bCtYMEAP4OtfypKOqEXaebgSqOrN4RKD5p9S0AS46En7SUOg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Kees Wolterstorff\\source\\repos\\physicsEvents\\physicsEvents\\physicsEvents.csproj",
+  "projectFilePath": "C:\\Users\\kjwolter\\Source\\Repos\\physicsEvents\\physicsEvents\\physicsEvents.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\Kees Wolterstorff\\.nuget\\packages\\system.servicemodel.syndication\\8.0.0\\system.servicemodel.syndication.8.0.0.nupkg.sha512"
+    "C:\\Users\\kjwolter\\.nuget\\packages\\system.servicemodel.syndication\\8.0.0\\system.servicemodel.syndication.8.0.0.nupkg.sha512"
   ],
   "logs": []
 }

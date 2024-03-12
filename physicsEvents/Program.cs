@@ -20,6 +20,7 @@ public class Program
         foreach (Events e in events)
         {
             Console.WriteLine(e.Uri.ToString());
+            Console.WriteLine(e.Title);
         }
 
     }

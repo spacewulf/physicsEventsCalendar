@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Kees Wolterstorff\\source\\repos\\physicsEvents\\physicsEvents\\physicsEvents.csproj": {}
+    "C:\\Users\\kjwolter\\Source\\Repos\\physicsEvents\\physicsEvents\\physicsEvents.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Kees Wolterstorff\\source\\repos\\physicsEvents\\physicsEvents\\physicsEvents.csproj": {
+    "C:\\Users\\kjwolter\\Source\\Repos\\physicsEvents\\physicsEvents\\physicsEvents.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Kees Wolterstorff\\source\\repos\\physicsEvents\\physicsEvents\\physicsEvents.csproj",
+        "projectUniqueName": "C:\\Users\\kjwolter\\Source\\Repos\\physicsEvents\\physicsEvents\\physicsEvents.csproj",
         "projectName": "physicsEvents",
-        "projectPath": "C:\\Users\\Kees Wolterstorff\\source\\repos\\physicsEvents\\physicsEvents\\physicsEvents.csproj",
-        "packagesPath": "C:\\Users\\Kees Wolterstorff\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Kees Wolterstorff\\source\\repos\\physicsEvents\\physicsEvents\\obj\\",
+        "projectPath": "C:\\Users\\kjwolter\\Source\\Repos\\physicsEvents\\physicsEvents\\physicsEvents.csproj",
+        "packagesPath": "C:\\Users\\kjwolter\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\kjwolter\\Source\\Repos\\physicsEvents\\physicsEvents\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\Kees Wolterstorff\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\kjwolter\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -66,7 +66,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.306\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.403\\RuntimeIdentifierGraph.json"
         }
       }
     }
