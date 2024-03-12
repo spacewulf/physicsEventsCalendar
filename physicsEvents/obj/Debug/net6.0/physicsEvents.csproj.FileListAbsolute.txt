@@ -32,3 +32,4 @@ C:\Users\kjwolter\Source\Repos\physicsEvents\physicsEvents\obj\Debug\net6.0\refi
 C:\Users\kjwolter\Source\Repos\physicsEvents\physicsEvents\obj\Debug\net6.0\physicsEvents.pdb
 C:\Users\kjwolter\Source\Repos\physicsEvents\physicsEvents\obj\Debug\net6.0\physicsEvents.genruntimeconfig.cache
 C:\Users\kjwolter\Source\Repos\physicsEvents\physicsEvents\obj\Debug\net6.0\ref\physicsEvents.dll
+C:\Users\kjwolter\Source\Repos\physicsEvents\physicsEvents\bin\Debug\net6.0\HtmlAgilityPack.dll
