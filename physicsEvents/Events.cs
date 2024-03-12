@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Security.Policy;
+using System.Collections.ObjectModel;
+using System.ServiceModel.Syndication;
 
 namespace physicsEvents
 {
