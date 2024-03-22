@@ -33,3 +33,22 @@ C:\Users\kjwolter\Source\Repos\physicsEvents\physicsEvents\obj\Debug\net6.0\phys
 C:\Users\kjwolter\Source\Repos\physicsEvents\physicsEvents\obj\Debug\net6.0\physicsEvents.genruntimeconfig.cache
 C:\Users\kjwolter\Source\Repos\physicsEvents\physicsEvents\obj\Debug\net6.0\ref\physicsEvents.dll
 C:\Users\kjwolter\Source\Repos\physicsEvents\physicsEvents\bin\Debug\net6.0\HtmlAgilityPack.dll
+C:\Users\Kees Wolterstorff\Source\Repos\spacewulf\physicsEvents\physicsEvents\obj\Debug\net6.0\physicsEvents.dll
+C:\Users\Kees Wolterstorff\Source\Repos\spacewulf\physicsEvents\physicsEvents\obj\Debug\net6.0\refint\physicsEvents.dll
+C:\Users\Kees Wolterstorff\Source\Repos\spacewulf\physicsEvents\physicsEvents\obj\Debug\net6.0\physicsEvents.pdb
+C:\Users\Kees Wolterstorff\Source\Repos\spacewulf\physicsEvents\physicsEvents\bin\Debug\net6.0\physicsEvents.exe
+C:\Users\Kees Wolterstorff\Source\Repos\spacewulf\physicsEvents\physicsEvents\bin\Debug\net6.0\physicsEvents.deps.json
+C:\Users\Kees Wolterstorff\Source\Repos\spacewulf\physicsEvents\physicsEvents\bin\Debug\net6.0\physicsEvents.runtimeconfig.json
+C:\Users\Kees Wolterstorff\Source\Repos\spacewulf\physicsEvents\physicsEvents\bin\Debug\net6.0\physicsEvents.dll
+C:\Users\Kees Wolterstorff\Source\Repos\spacewulf\physicsEvents\physicsEvents\bin\Debug\net6.0\physicsEvents.pdb
+C:\Users\Kees Wolterstorff\Source\Repos\spacewulf\physicsEvents\physicsEvents\bin\Debug\net6.0\HtmlAgilityPack.dll
+C:\Users\Kees Wolterstorff\Source\Repos\spacewulf\physicsEvents\physicsEvents\bin\Debug\net6.0\System.ServiceModel.Syndication.dll
+C:\Users\Kees Wolterstorff\Source\Repos\spacewulf\physicsEvents\physicsEvents\obj\Debug\net6.0\physicsEvents.csproj.AssemblyReference.cache
+C:\Users\Kees Wolterstorff\Source\Repos\spacewulf\physicsEvents\physicsEvents\obj\Debug\net6.0\physicsEvents.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Kees Wolterstorff\Source\Repos\spacewulf\physicsEvents\physicsEvents\obj\Debug\net6.0\physicsEvents.AssemblyInfoInputs.cache
+C:\Users\Kees Wolterstorff\Source\Repos\spacewulf\physicsEvents\physicsEvents\obj\Debug\net6.0\physicsEvents.AssemblyInfo.cs
+C:\Users\Kees Wolterstorff\Source\Repos\spacewulf\physicsEvents\physicsEvents\obj\Debug\net6.0\physicsEvents.csproj.CoreCompileInputs.cache
+C:\Users\Kees Wolterstorff\Source\Repos\spacewulf\physicsEvents\physicsEvents\obj\Debug\net6.0\physicsEvents.genruntimeconfig.cache
+C:\Users\Kees Wolterstorff\Source\Repos\spacewulf\physicsEvents\physicsEvents\obj\Debug\net6.0\ref\physicsEvents.dll
+C:\Users\Kees Wolterstorff\Source\Repos\spacewulf\physicsEvents\physicsEvents\obj\Debug\net6.0\physicsEvents.sourcelink.json
+C:\Users\Kees Wolterstorff\Source\Repos\spacewulf\physicsEvents\physicsEvents\obj\Debug\net6.0\physicsE.1E4828F2.Up2Date

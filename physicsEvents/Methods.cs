@@ -100,13 +100,89 @@ namespace physicsEvents
             foreach (SyndicationItem item in feed.Items)
             {
                 Events Event = new Events();
-                Event.Title = item.Title.Text.ToString();
+                Event.Title = item.Title.Text.ToString().Substring(0, item.Title.Text.ToString().IndexOf("("));
                 Event.Uri = item.Links[0].Uri;
                 events[eventIter] = Event;
                 eventIter++;
             }
 
             return events;
+        }
+        public static int secondOccurrence(string input, string searchInput)
+        {
+            int indexFirst = input.IndexOf(searchInput);
+            try
+            {
+                int indexSecond = input.IndexOf(searchInput, indexFirst + 1);
+                return indexSecond;
+            }
+            catch (Exception ex)
+            {
+                return -1;
+            }
+        }
+        public static int fetchNameIndex(string input)
+        {
+            return input.LastIndexOf(@"""name"": ") + 9;
+        }
+        public static string fetchSpeakerName(string input)
+        {
+            int startIndex = fetchNameIndex(input);
+            int endIndex = input.IndexOf(@"""", startIndex);
+            int length = endIndex - startIndex;
+            return input.Substring(startIndex, length);
+        }
+        public static string fetchLocation(string input)
+        {
+            int startIndexOne = secondOccurrence(input, @"""name"": ") + 9;
+            int endIndexOne = input.IndexOf(@"""", startIndexOne);
+            int lengthOne = endIndexOne - startIndexOne;
+            string roomTag = @"""room"":";
+            int startIndexTwo = input.IndexOf(roomTag) + 8;
+            int endIndexTwo = input.IndexOf(@"""", startIndexTwo);
+            int lengthTwo = endIndexTwo - startIndexTwo;
+            string building = input.Substring(startIndexOne, lengthOne);
+            string roomNumber = input.Substring(startIndexTwo, lengthTwo);
+            string location = building + " " + roomNumber;
+            return location;
+        }
+        public static string[] fetchBodyText(string eventsUri)
+        {
+            Events[] events = Methods.fetchEvents(eventsUri);
+
+            Uri[] uris = Methods.fetchUri(events);
+
+            string[] bodies = Methods.fetchHtmlText(uris);
+
+            return bodies;
+        }
+        public static Events[] assignSpeakerName(Events[] events, string[] bodies)
+        {
+            int iter = 0;
+            foreach (Events e in events)
+            {
+                e.Speaker = fetchSpeakerName(bodies[iter]);
+                iter++;
+            }
+            return events;
+        }
+        public static Events[] assignLocation(Events[] events, string[] bodies)
+        {
+            int iter = 0;
+            foreach (Events e in events)
+            {
+                e.Location = fetchLocation(bodies[iter]);
+                iter++;
+            }
+            return events;
+        }
+        public static Events[] getEvents(string uri)
+        {
+            Events[] events = fetchEvents(uri);
+            string[] bodies = fetchBodyText(uri);
+            Events[] eventsOutput = assignSpeakerName(events, bodies);
+            eventsOutput = assignLocation(eventsOutput, bodies);
+            return eventsOutput;
         }
     }
 }

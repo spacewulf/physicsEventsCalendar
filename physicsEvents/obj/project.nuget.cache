@@ -1,11 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "G240erN6opiOlsbisS2PGB6BcopuRDcVbXN2a7GDcGvddMhs0eeGUIPjA5INbmYnPgKgXKcOosGajCAfsuYzmg==",
+  "dgSpecHash": "S75KxTTD7r1WpuTWuil5SQYwYlqiTBol4HnZ9tNNhLRqa06SWLY6JGVyqpM0K3H1t2jOxLYgo0UJyWj7EB+04A==",
   "success": true,
-  "projectFilePath": "C:\\Users\\kjwolter\\Source\\Repos\\physicsEvents\\physicsEvents\\physicsEvents.csproj",
+  "projectFilePath": "C:\\Users\\Kees Wolterstorff\\Source\\Repos\\spacewulf\\physicsEvents\\physicsEvents\\physicsEvents.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\kjwolter\\.nuget\\packages\\htmlagilitypack\\1.11.59\\htmlagilitypack.1.11.59.nupkg.sha512",
-    "C:\\Users\\kjwolter\\.nuget\\packages\\system.servicemodel.syndication\\8.0.0\\system.servicemodel.syndication.8.0.0.nupkg.sha512"
+    "C:\\Users\\Kees Wolterstorff\\.nuget\\packages\\htmlagilitypack\\1.11.59\\htmlagilitypack.1.11.59.nupkg.sha512",
+    "C:\\Users\\Kees Wolterstorff\\.nuget\\packages\\system.servicemodel.syndication\\8.0.0\\system.servicemodel.syndication.8.0.0.nupkg.sha512"
   ],
   "logs": []
 }

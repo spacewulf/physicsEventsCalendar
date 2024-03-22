@@ -12,23 +12,30 @@ using static System.Convert;
 using System.Runtime.InteropServices;
 using System.Text.RegularExpressions;
 
-public class Program
+
+namespace physicsEvents
 {
-    public static void Main(string[] args)
+    public class Program
     {
-        string eventsUrl = "http://events.umich.edu/group/1965/rss?v=2&html_output=true";
+        public static void Main(string[] args)
+        {
+            string eventsUrl = "http://events.umich.edu/group/1965/rss?v=2&html_output=true";
 
-        string searchInput = @"""name"": ";
+            string[] bodies = Methods.fetchBodyText(eventsUrl);
 
-        Events[] events = Methods.fetchEvents(eventsUrl);
+            Events[] events = Methods.getEvents(eventsUrl);
+            foreach (Events e in events)
+            {
+                Console.WriteLine(e.Title);
+                Console.WriteLine(e.Speaker);
+                Console.WriteLine(e.Location);
+            }
+            // Console.WriteLine(bodies[1].Substring(Methods.fetchNameIndex(bodies[1])));
 
-        Uri[] uris = Methods.fetchUri(events);
+            // Console.WriteLine(events[0].Uri.ToString());
+            // Console.WriteLine(Regex.Matches(bodies[0], searchInput).Count);
+            // Console.WriteLine(bodies[0].LastIndexOf(searchInput));
 
-        string[] bodies = Methods.fetchHtmlText(uris);
-
-
-
-        Console.WriteLine(events[0].Uri.ToString());
-        Console.WriteLine(Regex.Matches(bodies[0], searchInput).Count);
+        }
     }
 }
