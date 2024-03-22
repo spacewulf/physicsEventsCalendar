@@ -30,12 +30,6 @@ namespace physicsEvents
                 Console.WriteLine(e.Speaker);
                 Console.WriteLine(e.Location);
             }
-            // Console.WriteLine(bodies[1].Substring(Methods.fetchNameIndex(bodies[1])));
-
-            // Console.WriteLine(events[0].Uri.ToString());
-            // Console.WriteLine(Regex.Matches(bodies[0], searchInput).Count);
-            // Console.WriteLine(bodies[0].LastIndexOf(searchInput));
-
         }
     }
 }
