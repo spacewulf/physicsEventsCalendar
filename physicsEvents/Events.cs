@@ -12,6 +12,7 @@ namespace physicsEvents
     public class Events
     {
         private string title;
+        public string summary;
         private string speaker;
         private string location;
         private string time;
@@ -29,6 +30,16 @@ namespace physicsEvents
                 if (title == value)
                     return;
                 title = value;
+            }
+        }
+        public string Summary
+        {
+            get { return summary; }
+            set
+            {
+                if (summary == value)
+                    return;
+                summary = value;
             }
         }
         public string Speaker

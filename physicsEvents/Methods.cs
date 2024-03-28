@@ -121,6 +121,22 @@ namespace physicsEvents
                 return -1;
             }
         }
+        public static string[] fetchDate(string input)
+        {
+            string[] strings = new string[2];
+
+            int startIndex1 = input.IndexOf(@"""startDate"":") + 14;
+            int endIndex1 = input.IndexOf(@"""", startIndex1);
+            int length1 = endIndex1 - startIndex1;
+            strings[0] = input.Substring(startIndex1, length1);
+
+            int startIndex2 = input.IndexOf(@"""startDate"":") + 12;
+            int endIndex2 = input.IndexOf(@"""", startIndex2);
+            int length2 = endIndex2 - startIndex2;
+            strings[1] = input.Substring(startIndex2, length2);
+
+            return strings;
+        }
         public static int fetchNameIndex(string input)
         {
             return input.LastIndexOf(@"""name"": ") + 9;

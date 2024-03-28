@@ -52,3 +52,7 @@ C:\Users\Kees Wolterstorff\Source\Repos\spacewulf\physicsEvents\physicsEvents\ob
 C:\Users\Kees Wolterstorff\Source\Repos\spacewulf\physicsEvents\physicsEvents\obj\Debug\net6.0\ref\physicsEvents.dll
 C:\Users\Kees Wolterstorff\Source\Repos\spacewulf\physicsEvents\physicsEvents\obj\Debug\net6.0\physicsEvents.sourcelink.json
 C:\Users\Kees Wolterstorff\Source\Repos\spacewulf\physicsEvents\physicsEvents\obj\Debug\net6.0\physicsE.1E4828F2.Up2Date
+C:\Users\Kees Wolterstorff\Source\Repos\spacewulf\physicsEvents\physicsEvents\bin\Debug\net6.0\Syncfusion.Compression.Portable.dll
+C:\Users\Kees Wolterstorff\Source\Repos\spacewulf\physicsEvents\physicsEvents\bin\Debug\net6.0\Syncfusion.DocIO.Portable.dll
+C:\Users\Kees Wolterstorff\Source\Repos\spacewulf\physicsEvents\physicsEvents\bin\Debug\net6.0\Syncfusion.Licensing.dll
+C:\Users\Kees Wolterstorff\Source\Repos\spacewulf\physicsEvents\physicsEvents\bin\Debug\net6.0\Syncfusion.OfficeChart.Portable.dll

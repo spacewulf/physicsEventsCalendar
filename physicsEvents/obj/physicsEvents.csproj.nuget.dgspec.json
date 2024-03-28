@@ -54,6 +54,10 @@
               "target": "Package",
               "version": "[1.11.59, )"
             },
+            "Syncfusion.DocIO.Net.Core": {
+              "target": "Package",
+              "version": "[25.1.35, )"
+            },
             "System.ServiceModel.Syndication": {
               "target": "Package",
               "version": "[8.0.0, )"
