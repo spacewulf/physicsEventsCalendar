@@ -15,8 +15,9 @@ namespace physicsEvents
         public string summary;
         private string speaker;
         private string location;
-        private string time;
-        private int duration;
+        private DateTime date;
+        private string startTime;
+        private string endTime;
         private Uri uri;
         public string Title
         // {
@@ -71,32 +72,43 @@ namespace physicsEvents
             }
         }
 
-        public string Time
+        public DateTime Date
+        {
+            get { return date; }
+            set
+            {
+                if (date == value)
+                    return;
+                date = value;
+            }
+        }
+
+        public string StartTime
         // {
         //     get { return time; }
         //     private set { time = value; }
         // }
         {
-            get { return time; }
+            get { return startTime; }
             set
             {
-                if (time == value)
+                if (startTime == value)
                     return;
-                time = value;
+                startTime = value;
             }
         }
-        public int Duration
+        public string EndTime
         // {
         //     get { return duration; }
         //     private set { duration = value; }
         // }
         {
-            get { return duration; }
+            get { return endTime; }
             set
             {
-                if (duration == value)
+                if (endTime == value)
                     return;
-                duration = value;
+                endTime = value;
             }
         }
         public Uri Uri

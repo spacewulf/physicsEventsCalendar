@@ -14,6 +14,7 @@ using System.Text.RegularExpressions;
 using Syncfusion.DocIO;
 using Syncfusion.DocIO.DLS;
 using System.IO;
+using System.Globalization;
 
 
 namespace physicsEvents
@@ -22,21 +23,39 @@ namespace physicsEvents
     {
         public static void Main(string[] args)
         {
+            
+            
             string eventsUrl = "http://events.umich.edu/group/1965/rss?v=2&html_output=true";
 
-            Events[] events = Methods.getEvents(eventsUrl);
-            //foreach (Events e in events)
-            //{
-            //   Console.WriteLine(e.Title);
-            //    Console.WriteLine(e.Speaker);
-            //    Console.WriteLine(e.Location);
-            //}
-            // int eventNumber = 0;
-            Events[] events1 = Methods.fetchEvents(eventsUrl);
-            string[] bodies = Methods.fetchBodyText(eventsUrl);
-            string[] dates = Methods.fetchDate(bodies[0]);
-            Console.WriteLine(dates[0]);
-        }
+            Console.WriteLine("Enter the first date: (M/D)");
+            string startDate = Console.ReadLine();
+            Console.WriteLine("Enter the last date: (M/D)");
+            string endDate = Console.ReadLine();
 
+            try
+            {
+                DateTime StartDate = DateTime.Parse(startDate);
+                DateTime EndDate = DateTime.Parse(endDate);
+                if (DateTime.Compare(StartDate, EndDate) > 0)
+                {
+                    throw new Exception("The start date must be prior to the end date.");
+                }
+            } catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+
+            Events[] events = Methods.GetEvents(eventsUrl, startDate, endDate);
+
+            foreach ( Events e in events )
+            {
+                Console.WriteLine(e.Title);
+                Console.WriteLine(e.Speaker);
+                Console.WriteLine(e.Location);
+                Console.WriteLine(e.Date);
+                Console.WriteLine(e.StartTime);
+                Console.WriteLine(e.EndTime);
+            }
+        }
     }
 }

@@ -8,12 +8,15 @@ using System.ServiceModel.Syndication;
 using System.Xml;
 using HtmlAgilityPack;
 using System.Net.NetworkInformation;
+using System.Globalization;
+using Syncfusion.DocIO;
+using Syncfusion.DocIO.DLS;
 
 namespace physicsEvents
 {
     internal class Methods
     {
-        public static HtmlDocument fetchHtmlPage(Uri uri)
+        public static HtmlDocument FetchHtmlPage(Uri uri)
         {
             var web = new HtmlWeb();
             var doc = web.Load(uri);
@@ -34,20 +37,20 @@ namespace physicsEvents
         //     }
         //     return docs;
         // }
-        public static HtmlDocument[] fetchHtmlPages(Uri[] uri)
+        public static HtmlDocument[] FetchHtmlPages(Uri[] uri)
         {
             int pageNumber = uri.Length;
             int pageIter = 0;
             HtmlDocument[] docs = new HtmlDocument[pageNumber];
             foreach ( Uri item in uri )
             {
-                docs[pageIter] = fetchHtmlPage(item);
+                docs[pageIter] = FetchHtmlPage(item);
                 pageIter++;
             }
             return docs;
         }
 
-        public static string[] fetchHtmlText(HtmlDocument[] docs)
+        public static string[] FetchHtmlText(HtmlDocument[] docs)
         {
             int pageNumber = 0;
             string[] strings = new string[docs.Length];
@@ -60,18 +63,18 @@ namespace physicsEvents
             return strings;
         }
 
-        public static string[] fetchHtmlText(Uri[] uris)
+        public static string[] FetchHtmlText(Uri[] uris)
         {
-            HtmlDocument[] pages = fetchHtmlPages(uris);
-            string[] bodies = fetchHtmlText(pages);
+            HtmlDocument[] pages = FetchHtmlPages(uris);
+            string[] bodies = FetchHtmlText(pages);
             return bodies;
         }
-        public static Uri fetchUri(Events Event)
+        public static Uri FetchUri(Events Event)
         {
             return Event.Uri;
         }
 
-        public static Uri[] fetchUri(Events[] events)
+        public static Uri[] FetchUri(Events[] events)
         {
             Uri[] uris = new Uri[events.Length];
             for (int i = 0; i < events.Length; i++)
@@ -81,7 +84,7 @@ namespace physicsEvents
             return uris;
         }
 
-        public static Events[] fetchEvents(string url)
+        public static Events[] FetchEvents(string url)
         {
             // int eventNumber = 0;
 
@@ -108,7 +111,7 @@ namespace physicsEvents
 
             return events;
         }
-        public static int secondOccurrence(string input, string searchInput)
+        public static int SecondOccurrence(string input, string searchInput)
         {
             int indexFirst = input.IndexOf(searchInput);
             try
@@ -121,7 +124,7 @@ namespace physicsEvents
                 return -1;
             }
         }
-        public static string[] fetchDate(string input)
+        public static string[] FetchDate(string input)
         {
             string[] strings = new string[2];
 
@@ -130,27 +133,27 @@ namespace physicsEvents
             int length1 = endIndex1 - startIndex1;
             strings[0] = input.Substring(startIndex1, length1);
 
-            int startIndex2 = input.IndexOf(@"""startDate"":") + 12;
+            int startIndex2 = input.IndexOf(@"""endDate"":") + 12;
             int endIndex2 = input.IndexOf(@"""", startIndex2);
             int length2 = endIndex2 - startIndex2;
             strings[1] = input.Substring(startIndex2, length2);
 
             return strings;
         }
-        public static int fetchNameIndex(string input)
+        public static int FetchNameIndex(string input)
         {
             return input.LastIndexOf(@"""name"": ") + 9;
         }
-        public static string fetchSpeakerName(string input)
+        public static string FetchSpeakerName(string input)
         {
-            int startIndex = fetchNameIndex(input);
+            int startIndex = FetchNameIndex(input);
             int endIndex = input.IndexOf(@"""", startIndex);
             int length = endIndex - startIndex;
             return input.Substring(startIndex, length);
         }
-        public static string fetchLocation(string input)
+        public static string FetchLocation(string input)
         {
-            int startIndexOne = secondOccurrence(input, @"""name"": ") + 9;
+            int startIndexOne = SecondOccurrence(input, @"""name"": ") + 9;
             int endIndexOne = input.IndexOf(@"""", startIndexOne);
             int lengthOne = endIndexOne - startIndexOne;
             string roomTag = @"""room"":";
@@ -162,43 +165,100 @@ namespace physicsEvents
             string location = building + " " + roomNumber;
             return location;
         }
-        public static string[] fetchBodyText(string eventsUri)
+        public static string[] FetchBodyText(string eventsUri)
         {
-            Events[] events = Methods.fetchEvents(eventsUri);
+            Events[] events = Methods.FetchEvents(eventsUri);
 
-            Uri[] uris = Methods.fetchUri(events);
+            Uri[] uris = Methods.FetchUri(events);
 
-            string[] bodies = Methods.fetchHtmlText(uris);
+            string[] bodies = Methods.FetchHtmlText(uris);
 
             return bodies;
         }
-        public static Events[] assignSpeakerName(Events[] events, string[] bodies)
+
+        public static Events[] AssignDate(Events[] events, string[] bodies)
         {
             int iter = 0;
             foreach (Events e in events)
             {
-                e.Speaker = fetchSpeakerName(bodies[iter]);
+                string[] dates = Methods.FetchDate(bodies[iter]);
+                string date = dates[0].Substring(0, dates[0].IndexOf("T"));
+                DateTime dateTemp = DateTime.Parse(date);
+                e.Date = DateTime.Parse(date);//.ToString("D", CultureInfo.CreateSpecificCulture("en"));
+
+                int startIndex = dates[0].IndexOf("T") + 1;
+                int length = dates[0].Substring(startIndex).IndexOf("-") - 3;
+                string time = dates[0].Substring(startIndex, length);
+                e.StartTime = time;
+
+                int endStartIndex = dates[1].IndexOf("T") + 1;
+                int endLength = dates[1].Substring(startIndex).IndexOf("-") - 3;
+                string endTime = dates[1].Substring(startIndex, length);
+                e.EndTime = endTime;
                 iter++;
             }
             return events;
         }
-        public static Events[] assignLocation(Events[] events, string[] bodies)
+        public static Events[] AssignSpeakerName(Events[] events, string[] bodies)
         {
             int iter = 0;
             foreach (Events e in events)
             {
-                e.Location = fetchLocation(bodies[iter]);
+                e.Speaker = FetchSpeakerName(bodies[iter]);
                 iter++;
             }
             return events;
         }
-        public static Events[] getEvents(string uri)
+        public static Events[] AssignLocation(Events[] events, string[] bodies)
         {
-            Events[] events = fetchEvents(uri);
-            string[] bodies = fetchBodyText(uri);
-            Events[] eventsOutput = assignSpeakerName(events, bodies);
-            eventsOutput = assignLocation(eventsOutput, bodies);
+            int iter = 0;
+            foreach (Events e in events)
+            {
+                e.Location = FetchLocation(bodies[iter]);
+                iter++;
+            }
+            return events;
+        }
+        public static Events[] CollectEvents(string uri)
+        {
+            Events[] events = FetchEvents(uri);
+            string[] bodies = FetchBodyText(uri);
+            Events[] eventsOutput = AssignSpeakerName(events, bodies);
+            eventsOutput = AssignLocation(eventsOutput, bodies);
+            eventsOutput = AssignDate(eventsOutput, bodies);
             return eventsOutput;
+        }
+
+        public static Events[] GetEvents(string uri, string startDate, string endDate)
+        {
+            Events[] events = CollectEvents(uri);
+            DateTime StartDate = DateTime.Parse(startDate);
+            DateTime EndDate = DateTime.Parse(endDate);
+            int checker = 0;
+
+            foreach (Events e in events)
+            {
+                if ( DateTime.Compare(StartDate, e.Date) <= 0 
+                    && DateTime.Compare(e.Date, EndDate) <= 0)
+                {
+                    checker++;
+                }
+            }
+
+            Events[] eventsOutput = new Events[checker];
+
+            int iter = 0;
+            foreach (Events e in events)
+            {
+                if (DateTime.Compare(StartDate, e.Date) <= 0
+                    && DateTime.Compare(e.Date, EndDate) <= 0)
+                {
+                    eventsOutput[iter] = e;
+                    iter++;
+                }
+            }
+            return eventsOutput;
+
         }
     }
 }
