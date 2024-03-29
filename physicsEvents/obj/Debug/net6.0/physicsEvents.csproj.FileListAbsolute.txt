@@ -56,3 +56,9 @@ C:\Users\Kees Wolterstorff\Source\Repos\spacewulf\physicsEvents\physicsEvents\bi
 C:\Users\Kees Wolterstorff\Source\Repos\spacewulf\physicsEvents\physicsEvents\bin\Debug\net6.0\Syncfusion.DocIO.Portable.dll
 C:\Users\Kees Wolterstorff\Source\Repos\spacewulf\physicsEvents\physicsEvents\bin\Debug\net6.0\Syncfusion.Licensing.dll
 C:\Users\Kees Wolterstorff\Source\Repos\spacewulf\physicsEvents\physicsEvents\bin\Debug\net6.0\Syncfusion.OfficeChart.Portable.dll
+C:\Users\Kees Wolterstorff\source\repos\spacewulf\physicsEvents\physicsEvents\bin\Debug\net6.0\DocumentFormat.OpenXml.dll
+C:\Users\Kees Wolterstorff\source\repos\spacewulf\physicsEvents\physicsEvents\bin\Debug\net6.0\DocumentFormat.OpenXml.Framework.dll
+C:\Users\Kees Wolterstorff\source\repos\spacewulf\physicsEvents\physicsEvents\bin\Debug\net6.0\System.IO.Packaging.dll
+C:\Users\Kees Wolterstorff\source\repos\spacewulf\physicsEvents\physicsEvents\bin\Debug\net6.0\Microsoft.Office.Interop.Word.dll
+C:\Users\Kees Wolterstorff\source\repos\spacewulf\physicsEvents\physicsEvents\bin\Debug\net6.0\Microsoft.Vbe.Interop.dll
+C:\Users\Kees Wolterstorff\source\repos\spacewulf\physicsEvents\physicsEvents\bin\Debug\net6.0\OFFICE.DLL

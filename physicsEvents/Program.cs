@@ -23,7 +23,7 @@ namespace physicsEvents
     {
         public static void Main(string[] args)
         {
-            
+
             
             string eventsUrl = "http://events.umich.edu/group/1965/rss?v=2&html_output=true";
 
@@ -46,6 +46,8 @@ namespace physicsEvents
             }
 
             Events[] events = Methods.GetEvents(eventsUrl, startDate, endDate);
+
+            GenerateWordDocument.Create(events);
 
             foreach ( Events e in events )
             {

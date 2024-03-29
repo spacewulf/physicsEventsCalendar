@@ -1,15 +1,19 @@
 {
   "version": 2,
-  "dgSpecHash": "Bc3DH0Q6szP1xaxwg88J+DszHdqhDP/F9eTSbarNX4q1bTjIrV64IItvVf/5C7a0zo/HL9OJ0a82p3QuVgPlSQ==",
+  "dgSpecHash": "CUbJT0qTwQpDAjvYHBBOMlGMPriM5NDl+WyLw2EeqK77d+HgrZ+OvB1+d8Uh7nP5sNEM+t26lBzUdOnwWEL6iA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Kees Wolterstorff\\Source\\Repos\\spacewulf\\physicsEvents\\physicsEvents\\physicsEvents.csproj",
+  "projectFilePath": "C:\\Users\\Kees Wolterstorff\\source\\repos\\spacewulf\\physicsEvents\\physicsEvents\\physicsEvents.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\Kees Wolterstorff\\.nuget\\packages\\documentformat.openxml\\3.0.2\\documentformat.openxml.3.0.2.nupkg.sha512",
+    "C:\\Users\\Kees Wolterstorff\\.nuget\\packages\\documentformat.openxml.framework\\3.0.2\\documentformat.openxml.framework.3.0.2.nupkg.sha512",
     "C:\\Users\\Kees Wolterstorff\\.nuget\\packages\\htmlagilitypack\\1.11.59\\htmlagilitypack.1.11.59.nupkg.sha512",
     "C:\\Users\\Kees Wolterstorff\\.nuget\\packages\\microsoft.netcore.platforms\\2.0.0\\microsoft.netcore.platforms.2.0.0.nupkg.sha512",
+    "C:\\Users\\Kees Wolterstorff\\.nuget\\packages\\microsoft.office.interop.word\\15.0.4797.1004\\microsoft.office.interop.word.15.0.4797.1004.nupkg.sha512",
     "C:\\Users\\Kees Wolterstorff\\.nuget\\packages\\syncfusion.compression.net.core\\25.1.35\\syncfusion.compression.net.core.25.1.35.nupkg.sha512",
     "C:\\Users\\Kees Wolterstorff\\.nuget\\packages\\syncfusion.docio.net.core\\25.1.35\\syncfusion.docio.net.core.25.1.35.nupkg.sha512",
     "C:\\Users\\Kees Wolterstorff\\.nuget\\packages\\syncfusion.licensing\\25.1.35\\syncfusion.licensing.25.1.35.nupkg.sha512",
     "C:\\Users\\Kees Wolterstorff\\.nuget\\packages\\syncfusion.officechart.net.core\\25.1.35\\syncfusion.officechart.net.core.25.1.35.nupkg.sha512",
+    "C:\\Users\\Kees Wolterstorff\\.nuget\\packages\\system.io.packaging\\8.0.0\\system.io.packaging.8.0.0.nupkg.sha512",
     "C:\\Users\\Kees Wolterstorff\\.nuget\\packages\\system.servicemodel.syndication\\8.0.0\\system.servicemodel.syndication.8.0.0.nupkg.sha512",
     "C:\\Users\\Kees Wolterstorff\\.nuget\\packages\\system.text.encoding.codepages\\4.4.0\\system.text.encoding.codepages.4.4.0.nupkg.sha512"
   ],
