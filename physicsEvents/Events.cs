@@ -19,6 +19,7 @@ namespace physicsEvents
         private string startTime;
         private string endTime;
         private Uri uri;
+        private Uri dateUri;
         public string Title
         // {
         //     get { return title; }
@@ -123,6 +124,16 @@ namespace physicsEvents
                 if (uri == value)
                     return;
                 uri = value;
+            }
+        }
+        public Uri DateUri
+        {
+            get { return dateUri; }
+            set
+            {
+                if (dateUri == value)
+                    return;
+                dateUri = value;
             }
         }
     }

@@ -29,35 +29,43 @@ namespace physicsEvents
                 {
                     Paragraph pDate = new Paragraph();
                     //Run runDate = pDate.AppendChild(new Run());
-                    Run runHyperLink = new Run();
-                    RunProperties runPropertiesHyperLink = new RunProperties(
+                    Run runDate = new Run();
+                    RunProperties runPropertiesDate = new RunProperties(
+                        new RunFonts() { Ascii = "Calibri" },
                         new RunStyle { Val = "Hyperlink", },
                         new Underline { Val = UnderlineValues.Single },
                         new Color { ThemeColor = ThemeColorValues.Hyperlink });
-                    Hyperlink hyperlink = new Hyperlink()
-                    {
-                        Anchor = e.Uri.ToString(),
-                        DocLocation = e.Uri.ToString()
-                    };
-                    Text textHyperLink = new Text(e.Date.ToString("D", CultureInfo.CreateSpecificCulture("en")));
-                    runHyperLink.Append(runPropertiesHyperLink);
-                    runHyperLink.Append(textHyperLink);
-                    hyperlink.Append(runHyperLink);
-                    pDate.Append(hyperlink);
-                    //Text date = new(e.Date.ToString("D", CultureInfo.CreateSpecificCulture("en")));
-                    //runDate.AppendChild(date);
+                    Hyperlink dateHyperlink = Methods.HyperlinkManager(e.DateUri.ToString(), document.MainDocumentPart);                 
+                    Text textDate = new Text(e.Date.ToString("D", CultureInfo.CreateSpecificCulture("en")));
+                    runDate.Append(runPropertiesDate);
+                    runDate.Append(textDate);
+                    dateHyperlink.Append(runDate);
+                    pDate.Append(dateHyperlink);
                     document.MainDocumentPart.Document.Body.AppendChild(pDate);
 
                     Paragraph pTime = new Paragraph();
                     Run runTime = pTime.AppendChild(new Run());
-                    Text time = new(e.StartTime.ToString());
+                    RunProperties runPropertiesTime = new RunProperties(
+                        new RunFonts() { Ascii = "Calibri"});
+                    string timeText = e.StartTime + "-" + e.EndTime;
+                    Text time = new(timeText);
                     runTime.AppendChild(time);
                     document.MainDocumentPart.Document.Body.AppendChild(pTime);
 
                     Paragraph pTitle = new Paragraph();
-                    Run runTitle = pTitle.AppendChild(new Run());
-                    Text title = new(e.Title);
-                    runTitle.AppendChild(title);
+                    Run runTitle = new Run();
+                    RunProperties runPropertiesTitle = new RunProperties(
+                        new RunFonts() { Ascii = "Calibri" },
+                        new RunStyle { Val = "Hyperlink", },
+                        new Underline { Val = UnderlineValues.Single },
+                        new Color { ThemeColor = ThemeColorValues.Hyperlink});
+                    Hyperlink titleHyperlink = Methods.HyperlinkManager(e.Uri.ToString(), document.MainDocumentPart);
+
+                    Text textTitleHyperlink = new(e.Title);
+                    runTitle.Append(runPropertiesTitle);
+                    runTitle.Append(textTitleHyperlink);
+                    titleHyperlink.Append(runTitle);
+                    pTitle.Append(titleHyperlink);
                     document.MainDocumentPart.Document.Body.AppendChild(pTitle);
 
                     Paragraph pSpeaker = new Paragraph();

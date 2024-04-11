@@ -9,13 +9,26 @@ using System.Xml;
 using HtmlAgilityPack;
 using System.Net.NetworkInformation;
 using System.Globalization;
-using Syncfusion.DocIO;
-using Syncfusion.DocIO.DLS;
+using DocumentFormat.OpenXml;
+using DocumentFormat.OpenXml.Packaging;
+using DocumentFormat.OpenXml.Wordprocessing;
 
 namespace physicsEvents
 {
     internal class Methods
     {
+        public static Hyperlink HyperlinkManager(string url, MainDocumentPart mainPart)
+        {
+            HyperlinkRelationship hr = mainPart.AddHyperlinkRelationship(new Uri(url), true);
+            string hrContactId = hr.Id;
+            return
+                new Hyperlink(
+                    new ProofError() { Type = ProofingErrorValues.GrammarStart },
+                    new Run(
+                        new RunProperties(
+                            new RunStyle() { Val = "Hyperlink" })))
+                { History = OnOffValue.FromBoolean(true), Id=hrContactId};
+        }
         public static HtmlDocument FetchHtmlPage(Uri uri)
         {
             var web = new HtmlWeb();
@@ -185,6 +198,7 @@ namespace physicsEvents
                 string date = dates[0].Substring(0, dates[0].IndexOf("T"));
                 DateTime dateTemp = DateTime.Parse(date);
                 e.Date = DateTime.Parse(date);//.ToString("D", CultureInfo.CreateSpecificCulture("en"));
+                e.DateUri = new System.Uri("https://lsa.umich.edu/physics/news-events/all-events.html#date=" + date + "&view=day");
 
                 int startIndex = dates[0].IndexOf("T") + 1;
                 int length = dates[0].Substring(startIndex).IndexOf("-") - 3;
