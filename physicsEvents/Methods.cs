@@ -35,21 +35,6 @@ namespace physicsEvents
             var doc = web.Load(uri);
             return doc;
         }
-
-        // public static HtmlDocument[] fetchHtmlPage(string[] url)
-        // {
-        //     int pageIter = 0;
-        //     int pageNumber = url.Length;
-        //     HtmlDocument[] docs = new HtmlDocument[pageNumber];
-        //     foreach ( var item in url )
-        //     {
-        //         var web = new HtmlWeb();
-        //         var doc = web.Load(item);
-        //         docs[pageIter] = doc;
-        //         pageIter++;
-        //     }
-        //     return docs;
-        // }
         public static HtmlDocument[] FetchHtmlPages(Uri[] uri)
         {
             int pageNumber = uri.Length;
@@ -99,7 +84,6 @@ namespace physicsEvents
 
         public static Events[] FetchEvents(string url)
         {
-            // int eventNumber = 0;
 
             XmlReader reader = XmlReader.Create(url);
 
@@ -197,7 +181,7 @@ namespace physicsEvents
                 string[] dates = Methods.FetchDate(bodies[iter]);
                 string date = dates[0].Substring(0, dates[0].IndexOf("T"));
                 DateTime dateTemp = DateTime.Parse(date);
-                e.Date = DateTime.Parse(date);//.ToString("D", CultureInfo.CreateSpecificCulture("en"));
+                e.Date = DateTime.Parse(date);
                 e.DateUri = new System.Uri("https://lsa.umich.edu/physics/news-events/all-events.html#date=" + date + "&view=day");
 
                 int startIndex = dates[0].IndexOf("T") + 1;

@@ -49,15 +49,6 @@ namespace physicsEvents
 
             GenerateWordDocument.Create(events);
 
-            //foreach ( Events e in events )
-            //{
-            //    Console.WriteLine(e.Title);
-            //    Console.WriteLine(e.Speaker);
-            //    Console.WriteLine(e.Location);
-            //    Console.WriteLine(e.Date);
-            //    Console.WriteLine(e.StartTime);
-            //    Console.WriteLine(e.EndTime);
-            //}
         }
     }
 }
