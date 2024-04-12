@@ -12,6 +12,7 @@ using System.Globalization;
 using DocumentFormat.OpenXml;
 using DocumentFormat.OpenXml.Packaging;
 using DocumentFormat.OpenXml.Wordprocessing;
+using System.Text.RegularExpressions;
 
 namespace physicsEvents
 {
@@ -159,7 +160,19 @@ namespace physicsEvents
             int lengthTwo = endIndexTwo - startIndexTwo;
             string building = input.Substring(startIndexOne, lengthOne);
             string roomNumber = input.Substring(startIndexTwo, lengthTwo);
-            string location = building + " " + roomNumber;
+            string location = roomNumber + " " + building;
+            int count = Regex.Matches(input, "zoom.us").Count;
+            if (count > 1)
+            {
+                int zoomIndex = input.IndexOf("https://umich.zoom.us");
+                string zoomLink = input.Substring(zoomIndex, 35);
+                if (int.TryParse(zoomLink.Substring(33), out int i) == false)
+                {
+                    zoomIndex = input.IndexOf("https://zoom.us");
+                    zoomLink = input.Substring(zoomIndex, 29);
+                }
+                location = location + " " + zoomLink;
+            }
             return location;
         }
         public static string[] FetchBodyText(string eventsUri)
@@ -182,7 +195,7 @@ namespace physicsEvents
                 string date = dates[0].Substring(0, dates[0].IndexOf("T"));
                 DateTime dateTemp = DateTime.Parse(date);
                 e.Date = DateTime.Parse(date);
-                e.DateUri = new System.Uri("https://lsa.umich.edu/physics/news-events/all-events.html#date=" + date + "&view=day");
+                e.DateUri = new System.Uri("https://lsa.umich.edu/physics/news-events/all-events.html#date=" + date + "&view=day"); //Must change if you want a different department
 
                 int startIndex = dates[0].IndexOf("T") + 1;
                 int length = dates[0].Substring(startIndex).IndexOf("-") - 3;

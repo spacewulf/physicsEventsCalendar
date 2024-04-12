@@ -47,7 +47,7 @@ namespace physicsEvents
 
             Events[] events = Methods.GetEvents(eventsUrl, startDate, endDate);
 
-            GenerateWordDocument.Create(events);
+            GenerateWordDocument.Create(events, DateTime.Parse(startDate), DateTime.Parse(endDate));
 
         }
     }

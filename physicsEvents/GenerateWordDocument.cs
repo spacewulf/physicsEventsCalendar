@@ -12,7 +12,7 @@ namespace physicsEvents
 {
     internal class GenerateWordDocument
     {
-        public static void Create(Events[] events)
+        public static void Create(Events[] events, DateTime startDate, DateTime endDate)
         {
             using (var document = WordprocessingDocument.Create(
                 @"c:\Users\Kees Wolterstorff\Desktop\test.docx", WordprocessingDocumentType.Document))
@@ -28,10 +28,35 @@ namespace physicsEvents
                 days.Add("Friday", false);
                 days.Add("Saturday", false);
 
+                SpacingBetweenLines spacingHeader = new SpacingBetweenLines() { Line = "240", LineRule = LineSpacingRuleValues.Auto, Before = "0", After = "0"};
+                Paragraph pHeader = new Paragraph();
+                ParagraphProperties pPropertiesHeader = new ParagraphProperties();
+                pPropertiesHeader.Append(spacingHeader);
+                Run runHeader = new Run();
+                RunProperties runPropertiesHeader = new RunProperties(
+                    new RunFonts() { Ascii = "Arial"});
+                runPropertiesHeader.Append(new Bold());
+                Text textHeader = new Text(startDate.ToString("D", CultureInfo.CreateSpecificCulture("en")) + "-" + endDate.ToString("D", CultureInfo.CreateSpecificCulture("en")));
+                runHeader.Append(runPropertiesHeader);
+                runHeader.Append(textHeader);
+                pHeader.Append(pPropertiesHeader);
+                pHeader.Append(runHeader);
+                document.MainDocumentPart.Document.Body.AppendChild(pHeader);
+
+
+                SpacingBetweenLines spacingHeaderSpace = new SpacingBetweenLines() { Line = "240", LineRule = LineSpacingRuleValues.Auto, Before = "0", After = "0" };
+                Paragraph pHeaderSpace = new Paragraph(
+                    new Run(
+                        new Text(" ")));
+                pHeaderSpace.Append(spacingHeaderSpace);
+                document.MainDocumentPart.Document.Body.AppendChild(pHeaderSpace);
+
+
                 foreach (Events e in events)
                 {
-                    if (days[e.Date.DayOfWeek.ToString()] == false)
+                    if (days[e.Date.DayOfWeek.ToString()] == false) //This checks to only print out the date line once for each day
                     {
+                        //This prints the date at the top and links it to the corresponding page on the website.
                         SpacingBetweenLines spacingDate = new SpacingBetweenLines() { Line = "240", LineRule = LineSpacingRuleValues.Auto, Before = "0", After = "0" };
                         Paragraph pDate = new Paragraph();
                         ParagraphProperties pPropertiesDate = new ParagraphProperties();
@@ -52,7 +77,35 @@ namespace physicsEvents
                         document.MainDocumentPart.Document.Body.AppendChild(pDate);
                     }
 
-                    days[e.Date.DayOfWeek.ToString()] = true;
+                    days[e.Date.DayOfWeek.ToString()] = true; //Once the date has been printed once, this sets the day's value to true to be never printed again (until the next time it's run)
+
+                    Dictionary<string, bool> times = new Dictionary<string, bool>();
+                    times.Add(e.StartTime, false);
+                    times.Add(e.EndTime, false);
+                    string startTime = e.StartTime;
+                    string endTime = e.EndTime;
+                    string timeText;
+                    Text textTime;
+
+                    if (Int32.Parse(e.StartTime.Substring(0, 2)) >= 12 )
+                    {
+                        times[e.StartTime] = true;
+                        if (Int32.Parse(e.StartTime.Substring(0,2)) > 12 )
+                        {
+                            startTime = (Int32.Parse(e.StartTime.Substring(0, 2)) - 12).ToString() + e.StartTime.Substring(2);
+                        }
+                    }
+
+                    if (Int32.Parse(e.EndTime.Substring(0,2)) >= 12 )
+                    {
+                        times[e.EndTime] = true;
+                        if (Int32.Parse(e.EndTime.Substring(0,2)) > 12)
+                        {
+                            endTime = (Int32.Parse(e.EndTime.Substring(0, 2)) - 12).ToString() + e.EndTime.Substring(2);
+                        }
+                    }
+
+
 
                     SpacingBetweenLines spacingTime = new SpacingBetweenLines() { Line = "240", LineRule = LineSpacingRuleValues.Auto, Before = "0", After = "0" };
                     Paragraph pTime = new Paragraph();
@@ -61,10 +114,27 @@ namespace physicsEvents
                     Run runTime = new Run();
                     RunProperties runPropertiesTime = new RunProperties(
                         new RunFonts() { Ascii = "Calibri"});
-                    string timeText = e.StartTime + "-" + e.EndTime;
-                    Text textTime = new(timeText);
+
                     runTime.Append(runPropertiesTime);
-                    runTime.Append(textTime);
+                    if (times[e.StartTime] == times[e.EndTime] && times[e.StartTime] == false)
+                    {
+
+                        timeText = startTime + "-" + endTime + " AM";
+                        textTime = new(timeText);
+                        runTime.Append(textTime);
+                    }
+                    else if (times[e.StartTime] == times[e.EndTime] && times[e.StartTime] == true)
+                    {
+                        timeText = startTime + "-" + endTime + " PM";
+                        textTime = new(timeText);
+                        runTime.Append(textTime);
+                    }
+                    else if (times[e.StartTime] != times[e.EndTime])
+                    {
+                        timeText = startTime + " AM-" + endTime + " PM";
+                        textTime = new(timeText);
+                        runTime.Append(textTime);
+                    }
                     pTime.Append(pPropertiesTime);
                     pTime.Append(runTime);
                     document.MainDocumentPart.Document.Body.AppendChild(pTime);
@@ -78,6 +148,11 @@ namespace physicsEvents
                         new RunFonts() { Ascii = "Calibri" },
                         new RunStyle { Val = "Hyperlink", },
                         new Underline { Val = UnderlineValues.Single });
+                    Highlight highlightTitle = new Highlight() { Val = HighlightColorValues.Yellow };
+                    if (e.Title.Contains("|") == false)
+                    {
+                        runPropertiesTitle.Append(highlightTitle);
+                    }
                     runPropertiesTitle.Append(new Bold());
                     Hyperlink titleHyperlink = Methods.HyperlinkManager(e.Uri.ToString(), document.MainDocumentPart);
 
@@ -96,6 +171,11 @@ namespace physicsEvents
                     Run runSpeaker = new Run();
                     RunProperties runPropertiesSpeaker = new RunProperties(
                         new RunFonts() { Ascii = "Calibri" });
+                    Highlight highlightSpeaker = new Highlight() { Val = HighlightColorValues.Yellow };
+                    if (e.Speaker.Contains("(") == false | e.Speaker.Contains(")") == false)
+                    {
+                        runPropertiesSpeaker.Append(highlightSpeaker);
+                    }
                     Text textSpeaker = new(e.Speaker);
                     runSpeaker.Append(runPropertiesSpeaker);
                     runSpeaker.Append(textSpeaker);
@@ -103,6 +183,7 @@ namespace physicsEvents
                     pSpeaker.Append(runSpeaker);
                     document.MainDocumentPart.Document.Body.AppendChild(pSpeaker);
 
+                    Text textLocation = new Text();
                     SpacingBetweenLines spacingLocation = new SpacingBetweenLines() { Line = "240", LineRule = LineSpacingRuleValues.Auto, Before = "0", After = "0" };
                     Paragraph pLocation = new Paragraph();
                     ParagraphProperties pPropertiesLocation = new ParagraphProperties();
@@ -111,12 +192,49 @@ namespace physicsEvents
                     RunProperties runPropertiesLocation = new RunProperties(
                         new RunFonts() { Ascii = "Calibri" });
                     runPropertiesLocation.Append(new Bold());
-                    Text textLocation = new(e.Location);
+                    if (e.Location.Contains("https"))
+                    {
+                        textLocation = new(e.Location.Substring(0, e.Location.IndexOf("https")));
+                    } else
+                    {
+                        textLocation = new(e.Location);
+                    }
                     runLocation.Append(runPropertiesLocation);
                     runLocation.Append(textLocation);
                     pLocation.Append(pPropertiesLocation);
                     pLocation.Append(runLocation);
                     document.MainDocumentPart.Document.Body.AppendChild(pLocation);
+
+                    if (e.Location.Contains("https"))
+                    {
+                        SpacingBetweenLines spacingZoom = new SpacingBetweenLines() { Line = "240", LineRule = LineSpacingRuleValues.Auto, Before = "0", After = "0" };
+                        Paragraph pZoom = new Paragraph();
+                        ParagraphProperties pPropertiesZoom = new ParagraphProperties();
+                        pPropertiesZoom.Append(spacingZoom);
+                        Run runZoomText = new Run();
+                        RunProperties runPropertiesZoom = new RunProperties(
+                            new RunFonts() { Ascii = "Calibri" });
+                        Text textZoomText = new("Event will be in-person and on Zoom: ");
+                        runZoomText.Append(runPropertiesZoom);
+                        runZoomText.Append(textZoomText);
+                        pZoom.Append(runZoomText);
+
+
+                        Hyperlink zoomHyperLink = Methods.HyperlinkManager(e.Location.Substring(e.Location.IndexOf("https")), document.MainDocumentPart);
+                        Run runZoomHyperlink = new Run();
+                        RunProperties runPropertiesZoomLink = new RunProperties(
+                            new RunFonts() { Ascii = "Calibri" },
+                            new Color() { Val = "76ABEE" });
+                        Text textZoomLink = new(" " + e.Location.Substring(e.Location.IndexOf("https")));
+                        textZoomLink.Space = SpaceProcessingModeValues.Preserve;
+                        runZoomHyperlink.Append(runPropertiesZoomLink);
+                        runZoomHyperlink.Append(textZoomLink);
+                        zoomHyperLink.Append(runZoomHyperlink);
+                        pZoom.Append(pPropertiesZoom);
+                        pZoom.Append(zoomHyperLink);
+                        document.MainDocumentPart.Document.Body.AppendChild(pZoom);
+
+                    }
 
                     SpacingBetweenLines spacingSpace = new SpacingBetweenLines() { Line = "240", LineRule = LineSpacingRuleValues.Auto, Before = "0", After = "0" };
                     Paragraph pSpace = new Paragraph();
