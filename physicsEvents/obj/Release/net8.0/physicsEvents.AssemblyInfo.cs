@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("physicsEvents")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Release")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+2a9dd159906151114c8874942da15ccd5390d444")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+69ce093578894f8b86af6032dcf7f079171b479a")]
 [assembly: System.Reflection.AssemblyProductAttribute("physicsEvents")]
 [assembly: System.Reflection.AssemblyTitleAttribute("physicsEvents")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

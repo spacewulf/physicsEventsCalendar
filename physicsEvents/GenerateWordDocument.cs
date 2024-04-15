@@ -12,7 +12,7 @@ namespace physicsEvents
 {
     internal class GenerateWordDocument
     {
-        public static void Create(Events[] events, DateTime startDate, DateTime endDate)
+        public static void Create(Events[] events, string path, DateTime startDate, DateTime endDate)
         {
             using (var document = WordprocessingDocument.Create(
                 @"c:\Users\Kees Wolterstorff\Desktop\test.docx", WordprocessingDocumentType.Document))

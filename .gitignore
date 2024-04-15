@@ -2,5 +2,7 @@
 *.vsdix
 *.v2
 *~
+**/bin/Debug
+**/bin/Release
 
 

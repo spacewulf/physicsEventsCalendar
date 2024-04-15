@@ -117,7 +117,7 @@ namespace physicsEvents
                 int indexSecond = input.IndexOf(searchInput, indexFirst + 1);
                 return indexSecond;
             }
-            catch (Exception ex)
+            catch
             {
                 return -1;
             }

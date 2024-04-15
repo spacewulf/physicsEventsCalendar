@@ -1,19 +1,19 @@
 {
   "version": 3,
   "targets": {
-    "net6.0": {
+    "net8.0": {
       "DocumentFormat.OpenXml/3.0.2": {
         "type": "package",
         "dependencies": {
           "DocumentFormat.OpenXml.Framework": "3.0.2"
         },
         "compile": {
-          "lib/netstandard2.0/DocumentFormat.OpenXml.dll": {
+          "lib/net8.0/DocumentFormat.OpenXml.dll": {
             "related": ".xml"
           }
         },
         "runtime": {
-          "lib/netstandard2.0/DocumentFormat.OpenXml.dll": {
+          "lib/net8.0/DocumentFormat.OpenXml.dll": {
             "related": ".xml"
           }
         }
@@ -24,12 +24,12 @@
           "System.IO.Packaging": "8.0.0"
         },
         "compile": {
-          "lib/net6.0/DocumentFormat.OpenXml.Framework.dll": {
+          "lib/net8.0/DocumentFormat.OpenXml.Framework.dll": {
             "related": ".xml"
           }
         },
         "runtime": {
-          "lib/net6.0/DocumentFormat.OpenXml.Framework.dll": {
+          "lib/net8.0/DocumentFormat.OpenXml.Framework.dll": {
             "related": ".xml"
           }
         }
@@ -47,90 +47,77 @@
           }
         }
       },
-      "Microsoft.NETCore.Platforms/2.0.0": {
-        "type": "package",
-        "compile": {
-          "lib/netstandard1.0/_._": {}
-        },
-        "runtime": {
-          "lib/netstandard1.0/_._": {}
-        }
-      },
-      "Microsoft.Office.Interop.Word/15.0.4797.1004": {
-        "type": "package",
-        "compile": {
-          "lib/netstandard2.0/Microsoft.Office.Interop.Word.dll": {}
-        },
-        "runtime": {
-          "lib/netstandard2.0/Microsoft.Office.Interop.Word.dll": {}
-        }
-      },
-      "Syncfusion.Compression.Net.Core/25.1.35": {
-        "type": "package",
-        "compile": {
-          "lib/net6.0/Syncfusion.Compression.Portable.dll": {
-            "related": ".xml"
-          }
-        },
-        "runtime": {
-          "lib/net6.0/Syncfusion.Compression.Portable.dll": {
-            "related": ".xml"
-          }
-        }
-      },
-      "Syncfusion.DocIO.Net.Core/25.1.35": {
+      "System.Configuration.ConfigurationManager/8.0.0": {
         "type": "package",
         "dependencies": {
-          "Syncfusion.Compression.Net.Core": "25.1.35",
-          "Syncfusion.Licensing": "25.1.35",
-          "Syncfusion.OfficeChart.Net.Core": "25.1.35",
-          "System.Text.Encoding.CodePages": "4.4.0"
+          "System.Diagnostics.EventLog": "8.0.0",
+          "System.Security.Cryptography.ProtectedData": "8.0.0"
         },
         "compile": {
-          "lib/net6.0/Syncfusion.DocIO.Portable.dll": {
+          "lib/net8.0/System.Configuration.ConfigurationManager.dll": {
             "related": ".xml"
           }
         },
         "runtime": {
-          "lib/net6.0/Syncfusion.DocIO.Portable.dll": {
+          "lib/net8.0/System.Configuration.ConfigurationManager.dll": {
             "related": ".xml"
           }
+        },
+        "build": {
+          "buildTransitive/net6.0/_._": {}
         }
       },
-      "Syncfusion.Licensing/25.1.35": {
+      "System.Diagnostics.EventLog/8.0.0": {
         "type": "package",
         "compile": {
-          "lib/net6.0/Syncfusion.Licensing.dll": {}
-        },
-        "runtime": {
-          "lib/net6.0/Syncfusion.Licensing.dll": {}
-        }
-      },
-      "Syncfusion.OfficeChart.Net.Core/25.1.35": {
-        "type": "package",
-        "dependencies": {
-          "Syncfusion.Compression.Net.Core": "25.1.35"
-        },
-        "compile": {
-          "lib/net6.0/Syncfusion.OfficeChart.Portable.dll": {
+          "lib/net8.0/System.Diagnostics.EventLog.dll": {
             "related": ".xml"
           }
         },
         "runtime": {
-          "lib/net6.0/Syncfusion.OfficeChart.Portable.dll": {
+          "lib/net8.0/System.Diagnostics.EventLog.dll": {
             "related": ".xml"
+          }
+        },
+        "build": {
+          "buildTransitive/net6.0/_._": {}
+        },
+        "runtimeTargets": {
+          "runtimes/win/lib/net8.0/System.Diagnostics.EventLog.Messages.dll": {
+            "assetType": "runtime",
+            "rid": "win"
+          },
+          "runtimes/win/lib/net8.0/System.Diagnostics.EventLog.dll": {
+            "assetType": "runtime",
+            "rid": "win"
           }
         }
       },
       "System.IO.Packaging/8.0.0": {
         "type": "package",
         "compile": {
-          "lib/net6.0/System.IO.Packaging.dll": {
+          "lib/net8.0/System.IO.Packaging.dll": {
             "related": ".xml"
           }
         },
         "runtime": {
-          "lib/net6.0/System.IO.Packaging.dll": {
+          "lib/net8.0/System.IO.Packaging.dll": {
+            "related": ".xml"
+          }
+        },
+        "build": {
+          "buildTransitive/net6.0/_._": {}
+        }
+      },
+      "System.Security.Cryptography.ProtectedData/8.0.0": {
+        "type": "package",
+        "compile": {
+          "lib/net8.0/System.Security.Cryptography.ProtectedData.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0/System.Security.Cryptography.ProtectedData.dll": {
             "related": ".xml"
           }
         },
@@ -141,37 +128,17 @@
       "System.ServiceModel.Syndication/8.0.0": {
         "type": "package",
         "compile": {
-          "lib/net6.0/System.ServiceModel.Syndication.dll": {
+          "lib/net8.0/System.ServiceModel.Syndication.dll": {
             "related": ".xml"
           }
         },
         "runtime": {
-          "lib/net6.0/System.ServiceModel.Syndication.dll": {
+          "lib/net8.0/System.ServiceModel.Syndication.dll": {
             "related": ".xml"
           }
         },
         "build": {
           "buildTransitive/net6.0/_._": {}
-        }
-      },
-      "System.Text.Encoding.CodePages/4.4.0": {
-        "type": "package",
-        "dependencies": {
-          "Microsoft.NETCore.Platforms": "2.0.0"
-        },
-        "compile": {
-          "ref/netstandard2.0/System.Text.Encoding.CodePages.dll": {
-            "related": ".xml"
-          }
-        },
-        "runtime": {
-          "lib/netstandard2.0/System.Text.Encoding.CodePages.dll": {}
-        },
-        "runtimeTargets": {
-          "runtimes/win/lib/netcoreapp2.0/System.Text.Encoding.CodePages.dll": {
-            "assetType": "runtime",
-            "rid": "win"
-          }
         }
       }
     }
@@ -273,123 +240,73 @@
         "lib/uap10.0/HtmlAgilityPack.pri"
       ]
     },
-    "Microsoft.NETCore.Platforms/2.0.0": {
-      "sha512": "VdLJOCXhZaEMY7Hm2GKiULmn7IEPFE4XC5LPSfBVCUIA8YLZVh846gtfBJalsPQF2PlzdD7ecX7DZEulJ402ZQ==",
+    "System.Configuration.ConfigurationManager/8.0.0": {
+      "sha512": "JlYi9XVvIREURRUlGMr1F6vOFLk7YSY4p1vHo4kX3tQ0AGrjqlRWHDi66ImHhy6qwXBG3BJ6Y1QlYQ+Qz6Xgww==",
       "type": "package",
-      "path": "microsoft.netcore.platforms/2.0.0",
+      "path": "system.configuration.configurationmanager/8.0.0",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
+        "Icon.png",
         "LICENSE.TXT",
+        "PACKAGE.md",
         "THIRD-PARTY-NOTICES.TXT",
-        "lib/netstandard1.0/_._",
-        "microsoft.netcore.platforms.2.0.0.nupkg.sha512",
-        "microsoft.netcore.platforms.nuspec",
-        "runtime.json",
-        "useSharedDesignerContext.txt",
-        "version.txt"
+        "buildTransitive/net461/System.Configuration.ConfigurationManager.targets",
+        "buildTransitive/net462/_._",
+        "buildTransitive/net6.0/_._",
+        "buildTransitive/netcoreapp2.0/System.Configuration.ConfigurationManager.targets",
+        "lib/net462/System.Configuration.ConfigurationManager.dll",
+        "lib/net462/System.Configuration.ConfigurationManager.xml",
+        "lib/net6.0/System.Configuration.ConfigurationManager.dll",
+        "lib/net6.0/System.Configuration.ConfigurationManager.xml",
+        "lib/net7.0/System.Configuration.ConfigurationManager.dll",
+        "lib/net7.0/System.Configuration.ConfigurationManager.xml",
+        "lib/net8.0/System.Configuration.ConfigurationManager.dll",
+        "lib/net8.0/System.Configuration.ConfigurationManager.xml",
+        "lib/netstandard2.0/System.Configuration.ConfigurationManager.dll",
+        "lib/netstandard2.0/System.Configuration.ConfigurationManager.xml",
+        "system.configuration.configurationmanager.8.0.0.nupkg.sha512",
+        "system.configuration.configurationmanager.nuspec",
+        "useSharedDesignerContext.txt"
       ]
     },
-    "Microsoft.Office.Interop.Word/15.0.4797.1004": {
-      "sha512": "lavTOrMGK/o/t3+gGr7JuVrL8XDdnS0DwPLcYv/StOiysXO4L0C36IXTVtEJo1Mh9Aoxo9a8dgGcPi+faTlv0g==",
+    "System.Diagnostics.EventLog/8.0.0": {
+      "sha512": "fdYxcRjQqTTacKId/2IECojlDSFvp7LP5N78+0z/xH7v/Tuw5ZAxu23Y6PTCRinqyu2ePx+Gn1098NC6jM6d+A==",
       "type": "package",
-      "path": "microsoft.office.interop.word/15.0.4797.1004",
+      "path": "system.diagnostics.eventlog/8.0.0",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
-        "lib/net20/Microsoft.Office.Interop.Word.dll",
-        "lib/netstandard2.0/Microsoft.Office.Interop.Word.dll",
-        "microsoft.office.interop.word.15.0.4797.1004.nupkg.sha512",
-        "microsoft.office.interop.word.nuspec"
-      ]
-    },
-    "Syncfusion.Compression.Net.Core/25.1.35": {
-      "sha512": "+CoL8TDFDzEEyr/vgis4p5XsJnLUSKKb5fIRo5f3rZzBin0b8o9267hFE0/FH8Xea7VypTD2wDajMebcVojK4w==",
-      "type": "package",
-      "path": "syncfusion.compression.net.core/25.1.35",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "LICENSE.txt",
-        "lib/net6.0/Syncfusion.Compression.Portable.dll",
-        "lib/net6.0/Syncfusion.Compression.Portable.xml",
-        "lib/net7.0/Syncfusion.Compression.Portable.dll",
-        "lib/net7.0/Syncfusion.Compression.Portable.xml",
-        "lib/net8.0/Syncfusion.Compression.Portable.dll",
-        "lib/net8.0/Syncfusion.Compression.Portable.xml",
-        "lib/netstandard2.0/Syncfusion.Compression.Portable.dll",
-        "lib/netstandard2.0/Syncfusion.Compression.Portable.xml",
-        "syncfusion.compression.net.core.25.1.35.nupkg.sha512",
-        "syncfusion.compression.net.core.nuspec",
-        "syncfusion_logo.png"
-      ]
-    },
-    "Syncfusion.DocIO.Net.Core/25.1.35": {
-      "sha512": "AlRD+eFJP38c/g+lw4oTZCf1oDMDbi1rsH9F5Gk9rMfA5p3D/DmAU18UrB9UrPoGWTMotmTt5RlRjFnxLhXcVg==",
-      "type": "package",
-      "path": "syncfusion.docio.net.core/25.1.35",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "LICENSE.txt",
-        "README.md",
-        "lib/net6.0/Syncfusion.DocIO.Portable.dll",
-        "lib/net6.0/Syncfusion.DocIO.Portable.xml",
-        "lib/net7.0/Syncfusion.DocIO.Portable.dll",
-        "lib/net7.0/Syncfusion.DocIO.Portable.xml",
-        "lib/net8.0/Syncfusion.DocIO.Portable.dll",
-        "lib/net8.0/Syncfusion.DocIO.Portable.xml",
-        "lib/netstandard2.0/Syncfusion.DocIO.Portable.dll",
-        "lib/netstandard2.0/Syncfusion.DocIO.Portable.xml",
-        "syncfusion.docio.net.core.25.1.35.nupkg.sha512",
-        "syncfusion.docio.net.core.nuspec",
-        "syncfusion_logo.png"
-      ]
-    },
-    "Syncfusion.Licensing/25.1.35": {
-      "sha512": "ZuMlu1xypHNxPM/UsPn1hEOOme30JgIQ9GzyF0yn/89mE6/g2ERkO+guhxnQXekEXTzVpYXkWnSshn1WV1l+rA==",
-      "type": "package",
-      "path": "syncfusion.licensing/25.1.35",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "LICENSE.txt",
-        "README.md",
-        "lib/MonoAndroid90/Syncfusion.Licensing.dll",
-        "lib/Xamarin.Mac/Syncfusion.Licensing.dll",
-        "lib/Xamarin.iOS10/Syncfusion.Licensing.dll",
-        "lib/net40/Syncfusion.Licensing.dll",
-        "lib/net45/Syncfusion.Licensing.dll",
-        "lib/net462/Syncfusion.Licensing.dll",
-        "lib/net6.0/Syncfusion.Licensing.dll",
-        "lib/net7.0/Syncfusion.Licensing.dll",
-        "lib/net8.0/Syncfusion.Licensing.dll",
-        "lib/netstandard2.0/Syncfusion.Licensing.dll",
-        "lib/uap10.0/Syncfusion.Licensing.dll",
-        "syncfusion.licensing.25.1.35.nupkg.sha512",
-        "syncfusion.licensing.nuspec",
-        "syncfusion_logo.png"
-      ]
-    },
-    "Syncfusion.OfficeChart.Net.Core/25.1.35": {
-      "sha512": "2/31sTgGlPE2ggAj7527FddaVrJlrFgY4zupKhGKmh8BlSGl8sghaNn+4sdwMvpR58Cs5Au2Wa5aCyUTHgbb3Q==",
-      "type": "package",
-      "path": "syncfusion.officechart.net.core/25.1.35",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "LICENSE.txt",
-        "lib/net6.0/Syncfusion.OfficeChart.Portable.dll",
-        "lib/net6.0/Syncfusion.OfficeChart.Portable.xml",
-        "lib/net7.0/Syncfusion.OfficeChart.Portable.dll",
-        "lib/net7.0/Syncfusion.OfficeChart.Portable.xml",
-        "lib/net8.0/Syncfusion.OfficeChart.Portable.dll",
-        "lib/net8.0/Syncfusion.OfficeChart.Portable.xml",
-        "lib/netstandard2.0/Syncfusion.OfficeChart.Portable.dll",
-        "lib/netstandard2.0/Syncfusion.OfficeChart.Portable.xml",
-        "syncfusion.officechart.net.core.25.1.35.nupkg.sha512",
-        "syncfusion.officechart.net.core.nuspec",
-        "syncfusion_logo.png"
+        "Icon.png",
+        "LICENSE.TXT",
+        "PACKAGE.md",
+        "THIRD-PARTY-NOTICES.TXT",
+        "buildTransitive/net461/System.Diagnostics.EventLog.targets",
+        "buildTransitive/net462/_._",
+        "buildTransitive/net6.0/_._",
+        "buildTransitive/netcoreapp2.0/System.Diagnostics.EventLog.targets",
+        "lib/net462/System.Diagnostics.EventLog.dll",
+        "lib/net462/System.Diagnostics.EventLog.xml",
+        "lib/net6.0/System.Diagnostics.EventLog.dll",
+        "lib/net6.0/System.Diagnostics.EventLog.xml",
+        "lib/net7.0/System.Diagnostics.EventLog.dll",
+        "lib/net7.0/System.Diagnostics.EventLog.xml",
+        "lib/net8.0/System.Diagnostics.EventLog.dll",
+        "lib/net8.0/System.Diagnostics.EventLog.xml",
+        "lib/netstandard2.0/System.Diagnostics.EventLog.dll",
+        "lib/netstandard2.0/System.Diagnostics.EventLog.xml",
+        "runtimes/win/lib/net6.0/System.Diagnostics.EventLog.Messages.dll",
+        "runtimes/win/lib/net6.0/System.Diagnostics.EventLog.dll",
+        "runtimes/win/lib/net6.0/System.Diagnostics.EventLog.xml",
+        "runtimes/win/lib/net7.0/System.Diagnostics.EventLog.Messages.dll",
+        "runtimes/win/lib/net7.0/System.Diagnostics.EventLog.dll",
+        "runtimes/win/lib/net7.0/System.Diagnostics.EventLog.xml",
+        "runtimes/win/lib/net8.0/System.Diagnostics.EventLog.Messages.dll",
+        "runtimes/win/lib/net8.0/System.Diagnostics.EventLog.dll",
+        "runtimes/win/lib/net8.0/System.Diagnostics.EventLog.xml",
+        "system.diagnostics.eventlog.8.0.0.nupkg.sha512",
+        "system.diagnostics.eventlog.nuspec",
+        "useSharedDesignerContext.txt"
       ]
     },
     "System.IO.Packaging/8.0.0": {
@@ -421,6 +338,42 @@
         "useSharedDesignerContext.txt"
       ]
     },
+    "System.Security.Cryptography.ProtectedData/8.0.0": {
+      "sha512": "+TUFINV2q2ifyXauQXRwy4CiBhqvDEDZeVJU7qfxya4aRYOKzVBpN+4acx25VcPB9ywUN6C0n8drWl110PhZEg==",
+      "type": "package",
+      "path": "system.security.cryptography.protecteddata/8.0.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Icon.png",
+        "LICENSE.TXT",
+        "PACKAGE.md",
+        "THIRD-PARTY-NOTICES.TXT",
+        "buildTransitive/net461/System.Security.Cryptography.ProtectedData.targets",
+        "buildTransitive/net462/_._",
+        "buildTransitive/net6.0/_._",
+        "buildTransitive/netcoreapp2.0/System.Security.Cryptography.ProtectedData.targets",
+        "lib/MonoAndroid10/_._",
+        "lib/MonoTouch10/_._",
+        "lib/net462/System.Security.Cryptography.ProtectedData.dll",
+        "lib/net462/System.Security.Cryptography.ProtectedData.xml",
+        "lib/net6.0/System.Security.Cryptography.ProtectedData.dll",
+        "lib/net6.0/System.Security.Cryptography.ProtectedData.xml",
+        "lib/net7.0/System.Security.Cryptography.ProtectedData.dll",
+        "lib/net7.0/System.Security.Cryptography.ProtectedData.xml",
+        "lib/net8.0/System.Security.Cryptography.ProtectedData.dll",
+        "lib/net8.0/System.Security.Cryptography.ProtectedData.xml",
+        "lib/netstandard2.0/System.Security.Cryptography.ProtectedData.dll",
+        "lib/netstandard2.0/System.Security.Cryptography.ProtectedData.xml",
+        "lib/xamarinios10/_._",
+        "lib/xamarinmac20/_._",
+        "lib/xamarintvos10/_._",
+        "lib/xamarinwatchos10/_._",
+        "system.security.cryptography.protecteddata.8.0.0.nupkg.sha512",
+        "system.security.cryptography.protecteddata.nuspec",
+        "useSharedDesignerContext.txt"
+      ]
+    },
     "System.ServiceModel.Syndication/8.0.0": {
       "sha512": "CJxIUwpBkMCPmIx46tFVOt0zpRrYurUHLW6tJBcmyj+MyWpKc6MMcS69B7IdlV/bgtgys073wMIHZX9QOQ1OFA==",
       "type": "package",
@@ -449,62 +402,13 @@
         "system.servicemodel.syndication.nuspec",
         "useSharedDesignerContext.txt"
       ]
-    },
-    "System.Text.Encoding.CodePages/4.4.0": {
-      "sha512": "6JX7ZdaceBiLKLkYt8zJcp4xTJd1uYyXXEkPw6mnlUIjh1gZPIVKPtRXPmY5kLf6DwZmf5YLwR3QUrRonl7l0A==",
-      "type": "package",
-      "path": "system.text.encoding.codepages/4.4.0",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "LICENSE.TXT",
-        "THIRD-PARTY-NOTICES.TXT",
-        "lib/MonoAndroid10/_._",
-        "lib/MonoTouch10/_._",
-        "lib/net46/System.Text.Encoding.CodePages.dll",
-        "lib/net461/System.Text.Encoding.CodePages.dll",
-        "lib/netstandard1.3/System.Text.Encoding.CodePages.dll",
-        "lib/netstandard2.0/System.Text.Encoding.CodePages.dll",
-        "lib/xamarinios10/_._",
-        "lib/xamarinmac20/_._",
-        "lib/xamarintvos10/_._",
-        "lib/xamarinwatchos10/_._",
-        "ref/MonoAndroid10/_._",
-        "ref/MonoTouch10/_._",
-        "ref/netstandard1.3/System.Text.Encoding.CodePages.dll",
-        "ref/netstandard1.3/System.Text.Encoding.CodePages.xml",
-        "ref/netstandard1.3/de/System.Text.Encoding.CodePages.xml",
-        "ref/netstandard1.3/es/System.Text.Encoding.CodePages.xml",
-        "ref/netstandard1.3/fr/System.Text.Encoding.CodePages.xml",
-        "ref/netstandard1.3/it/System.Text.Encoding.CodePages.xml",
-        "ref/netstandard1.3/ja/System.Text.Encoding.CodePages.xml",
-        "ref/netstandard1.3/ko/System.Text.Encoding.CodePages.xml",
-        "ref/netstandard1.3/ru/System.Text.Encoding.CodePages.xml",
-        "ref/netstandard1.3/zh-hans/System.Text.Encoding.CodePages.xml",
-        "ref/netstandard1.3/zh-hant/System.Text.Encoding.CodePages.xml",
-        "ref/netstandard2.0/System.Text.Encoding.CodePages.dll",
-        "ref/netstandard2.0/System.Text.Encoding.CodePages.xml",
-        "ref/xamarinios10/_._",
-        "ref/xamarinmac20/_._",
-        "ref/xamarintvos10/_._",
-        "ref/xamarinwatchos10/_._",
-        "runtimes/win/lib/net461/System.Text.Encoding.CodePages.dll",
-        "runtimes/win/lib/netcoreapp2.0/System.Text.Encoding.CodePages.dll",
-        "runtimes/win/lib/netstandard1.3/System.Text.Encoding.CodePages.dll",
-        "runtimes/win/lib/netstandard2.0/System.Text.Encoding.CodePages.dll",
-        "system.text.encoding.codepages.4.4.0.nupkg.sha512",
-        "system.text.encoding.codepages.nuspec",
-        "useSharedDesignerContext.txt",
-        "version.txt"
-      ]
     }
   },
   "projectFileDependencyGroups": {
-    "net6.0": [
+    "net8.0": [
       "DocumentFormat.OpenXml >= 3.0.2",
       "HtmlAgilityPack >= 1.11.59",
-      "Microsoft.Office.Interop.Word >= 15.0.4797.1004",
-      "Syncfusion.DocIO.Net.Core >= 25.1.35",
+      "System.Configuration.ConfigurationManager >= 8.0.0",
       "System.ServiceModel.Syndication >= 8.0.0"
     ]
   },
@@ -515,11 +419,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Kees Wolterstorff\\Source\\Repos\\spacewulf\\physicsEvents\\physicsEvents\\physicsEvents.csproj",
+      "projectUniqueName": "C:\\Users\\Kees Wolterstorff\\source\\repos\\physicsEvents\\physicsEvents\\physicsEvents.csproj",
       "projectName": "physicsEvents",
-      "projectPath": "C:\\Users\\Kees Wolterstorff\\Source\\Repos\\spacewulf\\physicsEvents\\physicsEvents\\physicsEvents.csproj",
+      "projectPath": "C:\\Users\\Kees Wolterstorff\\source\\repos\\physicsEvents\\physicsEvents\\physicsEvents.csproj",
       "packagesPath": "C:\\Users\\Kees Wolterstorff\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Kees Wolterstorff\\Source\\Repos\\spacewulf\\physicsEvents\\physicsEvents\\obj\\",
+      "outputPath": "C:\\Users\\Kees Wolterstorff\\source\\repos\\physicsEvents\\physicsEvents\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -530,7 +434,7 @@
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
-        "net6.0"
+        "net8.0"
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
@@ -538,8 +442,8 @@
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
-        "net6.0": {
-          "targetAlias": "net6.0",
+        "net8.0": {
+          "targetAlias": "net8.0",
           "projectReferences": {}
         }
       },
@@ -555,8 +459,8 @@
       }
     },
     "frameworks": {
-      "net6.0": {
-        "targetAlias": "net6.0",
+      "net8.0": {
+        "targetAlias": "net8.0",
         "dependencies": {
           "DocumentFormat.OpenXml": {
             "target": "Package",
@@ -566,13 +470,9 @@
             "target": "Package",
             "version": "[1.11.59, )"
           },
-          "Microsoft.Office.Interop.Word": {
+          "System.Configuration.ConfigurationManager": {
             "target": "Package",
-            "version": "[15.0.4797.1004, )"
-          },
-          "Syncfusion.DocIO.Net.Core": {
-            "target": "Package",
-            "version": "[25.1.35, )"
+            "version": "[8.0.0, )"
           },
           "System.ServiceModel.Syndication": {
             "target": "Package",
@@ -595,7 +495,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.204\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.204/PortableRuntimeIdentifierGraph.json"
       }
     }
   }
