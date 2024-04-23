@@ -176,6 +176,7 @@ namespace physicsEvents
                     {
                         runPropertiesSpeaker.Append(highlightSpeaker);
                     }
+                    runPropertiesSpeaker.Append(new Italic());
                     Text textSpeaker = new(e.Speaker);
                     runSpeaker.Append(runPropertiesSpeaker);
                     runSpeaker.Append(textSpeaker);
@@ -189,16 +190,27 @@ namespace physicsEvents
                     ParagraphProperties pPropertiesLocation = new ParagraphProperties();
                     pPropertiesLocation.Append(spacingLocation);
                     Run runLocation = new Run();
+                    string locationText = e.Location;
                     RunProperties runPropertiesLocation = new RunProperties(
                         new RunFonts() { Ascii = "Calibri" });
                     runPropertiesLocation.Append(new Bold());
                     if (e.Location.Contains("https"))
                     {
-                        textLocation = new(e.Location.Substring(0, e.Location.IndexOf("https")));
+                        locationText = new(e.Location.Substring(0, e.Location.IndexOf("https")));
+                    } else if (e.Location.Contains("http"))
+                    {
+                        locationText = new(e.Location.Substring(0, e.Location.IndexOf("http")));
                     } else
                     {
-                        textLocation = new(e.Location);
+                        locationText = new(e.Location);
                     }
+
+                    if (e.IsLivestreamed)
+                    {
+                        runPropertiesLocation.Append(new Highlight());
+                        locationText = locationText + " Look for livestream link!";
+                    }
+                    textLocation = new(locationText);
                     runLocation.Append(runPropertiesLocation);
                     runLocation.Append(textLocation);
                     pLocation.Append(pPropertiesLocation);

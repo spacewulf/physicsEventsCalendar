@@ -20,6 +20,7 @@ namespace physicsEvents
         private string endTime;
         private Uri uri;
         private Uri dateUri;
+        private bool isLivestreamed;
         public string Title
         // {
         //     get { return title; }
@@ -134,6 +135,17 @@ namespace physicsEvents
                 if (dateUri == value)
                     return;
                 dateUri = value;
+            }
+        }
+
+        public bool IsLivestreamed
+        {
+            get { return isLivestreamed; }
+            set
+            {
+                if (isLivestreamed == value)
+                    return;
+                isLivestreamed = value;
             }
         }
     }

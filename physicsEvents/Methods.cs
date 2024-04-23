@@ -230,11 +230,28 @@ namespace physicsEvents
             }
             return events;
         }
+
+        public static Events[] AssignStreamed(Events[] events, string[] bodies)
+        {
+            int iter = 0;
+            foreach (Events e in events)
+            {
+                int count = Regex.Matches(bodies[iter], "livestream").Count;
+                if ((bodies[iter].IndexOf("live stream", StringComparison.OrdinalIgnoreCase) >= 0) | count > 9)
+                {
+                    e.IsLivestreamed = true;
+                } else { e.IsLivestreamed = false;}
+                iter++;
+            }
+            return events;
+        }
+
         public static Events[] CollectEvents(string uri)
         {
             Events[] events = FetchEvents(uri);
             string[] bodies = FetchBodyText(uri);
             Events[] eventsOutput = AssignSpeakerName(events, bodies);
+            eventsOutput = AssignStreamed(eventsOutput, bodies);
             eventsOutput = AssignLocation(eventsOutput, bodies);
             eventsOutput = AssignDate(eventsOutput, bodies);
             return eventsOutput;

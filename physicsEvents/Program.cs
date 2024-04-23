@@ -24,9 +24,12 @@ namespace physicsEvents
     {
         public static void Main(string[] args)
         {
+
+            Configuration config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
+
             string path = @"c:\Users\Kees Wolterstorff\Desktop\test.docx";
 
-            ConfigurationManager.AppSettings.Set("Path", path);
+            //ConfigurationManager.AppSettings.Set("Path", path);
 
             string pathGeneric;
 
@@ -67,7 +70,10 @@ namespace physicsEvents
             }
 
         StartProgram:
+            pathGeneric = ConfigurationManager.AppSettings.Get("Path") + ConfigurationManager.AppSettings.Get("Name") + ".docx";
             Console.Clear();
+            Console.WriteLine(path);
+            Console.WriteLine(pathGeneric);
             Console.WriteLine("Enter the first date: (M/D)");
             string startDate = Console.ReadLine();
             Console.WriteLine("Enter the last date: (M/D)");
@@ -89,7 +95,7 @@ namespace physicsEvents
 
             Events[] events = Methods.GetEvents(eventsUrl, startDate, endDate);
 
-            GenerateWordDocument.Create(events, path, DateTime.Parse(startDate), DateTime.Parse(endDate));
+            GenerateWordDocument.Create(events, pathGeneric, DateTime.Parse(startDate), DateTime.Parse(endDate));
             Console.Clear();
             Console.WriteLine("Successfully generated word document to: " + ConfigurationManager.AppSettings.Get("Path") + ConfigurationManager.AppSettings.Get("Name"));
             Console.WriteLine("Would you like to continue? [Y/N]");
@@ -161,6 +167,22 @@ namespace physicsEvents
                     {
                         case "Y":
                             ConfigurationManager.AppSettings.Set("Path", enteredPath);
+                            //config.AppSettings.Settings["Path"].Value = enteredPath;
+                            //config.Save(ConfigurationSaveMode.Modified);
+                            //ConfigurationManager.RefreshSection("appSettings");
+                            goto ChangeSettings;
+                        case "y":
+                            config.AppSettings.Settings["Path"].Value = enteredPath;
+                            config.Save(ConfigurationSaveMode.Modified);
+                            ConfigurationManager.RefreshSection("appSettings");
+                            goto ChangeSettings;
+                        case "N":
+                            Console.Clear();
+                            Console.WriteLine("Nothing changed. Press enter to continue.");
+                            goto ChangeSettings;
+                        case "n":
+                            Console.Clear();
+                            Console.WriteLine("Nothing changed. Press enter to continue.");
                             goto ChangeSettings;
                     }
                     goto Start;
@@ -176,49 +198,28 @@ namespace physicsEvents
                     switch (confirmSetting)
                     {
                         case "Y":
-                            ConfigurationManager.AppSettings.Set("Name", enteredName);
+                            config.AppSettings.Settings["Name"].Value = enteredName;
+                            config.Save(ConfigurationSaveMode.Modified);
+                            ConfigurationManager.RefreshSection("appSettings");
                             goto ChangeSettings;
                         case "y":
-                            ConfigurationManager.AppSettings.Set("Name", enteredName);
+                            config.AppSettings.Settings["Name"].Value = enteredName;
+                            config.Save(ConfigurationSaveMode.Modified);
+                            ConfigurationManager.RefreshSection("appSettings");
                             goto ChangeSettings;
                         case "N":
                             Console.Clear();
-                            Console.WriteLine("Would you like to enter a new name, or return to the previous menu?");
-                            Console.WriteLine("1: Set a new name");
-                            Console.WriteLine("2: Return");
-                            returnString = Console.ReadLine();
-                            if (Int32.TryParse(returnString, out int valueName))
-                            {
-                                int intChoice = Convert.ToInt32(choice);
-                                if (intChoice < 1 | intChoice > 3)
-                                {
-                                    Console.Clear();
-                                    Console.WriteLine("That's not a valid choice.");
-                                    Console.WriteLine();
-                                    goto Start;
-                                }
-                            }
-                            else
-                            {
-                                Console.Clear();
-                                Console.WriteLine("That's not a valid choice.");
-                                Console.WriteLine();
-                                goto Start;
-                            }
-                            int returnInt = Int32.Parse(returnString);
-                            switch (returnInt)
-                            {
-                                case 1: goto Filename;
-                                case 2: goto ChangeSettings;
-                                default:
-                                    Console.Clear();
-                                    Console.WriteLine("That's not a valid choice.");
-                                    goto Filename;
-                            }
+                            Console.WriteLine("Nothing changed. Press enter to continue.");
+                            goto ChangeSettings;
+                        case "n":
+                            Console.Clear();
+                            Console.WriteLine("Nothing changed. Press enter to continue.");
+                            goto ChangeSettings;
                         default:
                             goto Start;
                     }
                 case 3:
+                    Console.Clear();
                     goto Start;
                 default:
                     System.Environment.Exit(1);
