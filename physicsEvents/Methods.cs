@@ -18,6 +18,7 @@ namespace physicsEvents
 {
     internal class Methods
     {
+        //Methods Used in GenerateWordDocument.cs
         public static Hyperlink HyperlinkManager(string url, MainDocumentPart mainPart)
         {
             HyperlinkRelationship hr = mainPart.AddHyperlinkRelationship(new Uri(url), true);
@@ -30,6 +31,8 @@ namespace physicsEvents
                             new RunStyle() { Val = "Hyperlink" })))
                 { History = OnOffValue.FromBoolean(true), Id=hrContactId};
         }
+
+        //Methods called internally within Methods.cs
         public static HtmlDocument FetchHtmlPage(Uri uri)
         {
             var web = new HtmlWeb();
@@ -142,6 +145,12 @@ namespace physicsEvents
         {
             return input.LastIndexOf(@"""name"": ") + 9;
         }
+        public static Uri FetchEventUri(string input)
+        {
+            int eventsIndex = input.IndexOf(@"""iCal_href"": ");
+            string uriSubstring = input.Substring(eventsIndex, 36).Substring(21, 15);
+            return new System.Uri("https://lsa.umich.edu/physics/news-events/all-events.detail.html/" + uriSubstring + ".html"); //This must be changed when moving to a different department
+        }
         public static string FetchSpeakerName(string input)
         {
             int startIndex = FetchNameIndex(input);
@@ -206,6 +215,7 @@ namespace physicsEvents
                 int endLength = dates[1].Substring(startIndex).IndexOf("-") - 3;
                 string endTime = dates[1].Substring(startIndex, length);
                 e.EndTime = endTime;
+
                 iter++;
             }
             return events;
@@ -220,6 +230,18 @@ namespace physicsEvents
             }
             return events;
         }
+
+        public static Events[] AssignEventUri(Events[] events, string[] bodies)
+        {
+            int iter = 0;
+            foreach (Events e in events)
+            {
+                e.Uri = FetchEventUri(bodies[iter]);
+                iter++;
+            }
+            return events;
+        }
+
         public static Events[] AssignLocation(Events[] events, string[] bodies)
         {
             int iter = 0;
@@ -254,9 +276,10 @@ namespace physicsEvents
             eventsOutput = AssignStreamed(eventsOutput, bodies);
             eventsOutput = AssignLocation(eventsOutput, bodies);
             eventsOutput = AssignDate(eventsOutput, bodies);
+            eventsOutput = AssignEventUri(eventsOutput, bodies);
             return eventsOutput;
         }
-
+        //Methods used in Program.cs
         public static Events[] GetEvents(string uri, string startDate, string endDate)
         {
             Events[] events = CollectEvents(uri);

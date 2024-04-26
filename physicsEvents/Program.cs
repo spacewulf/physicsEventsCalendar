@@ -24,28 +24,98 @@ namespace physicsEvents
     {
         public static void Main(string[] args)
         {
+            string confirmSetting;
+            string pathGeneric;
+            string eventsUrl = "http://events.umich.edu/group/1965/rss?v=2&html_output=true";
 
             Configuration config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
 
-            string path = @"c:\Users\Kees Wolterstorff\Desktop\test.docx";
+            if (ConfigurationManager.AppSettings.Get("FirstLaunch") == "true")
+            {
+                FirstLaunch:
+                if (ConfigurationManager.AppSettings.Get("Path") != "" && ConfigurationManager.AppSettings.Get("Name") != "")
+                {
+                    config.AppSettings.Settings["FirstLaunch"].Value = "false";
+                    goto Start;
+                }
+                Console.Clear();
+                Console.WriteLine("Welcome to the U-M Department of Physics Events Organizer by Kees Wolterstorff!");
+                Console.WriteLine("To get started, you must set your path and filename you'd like to output.");
+                Console.WriteLine("1: Path of File");
+                Console.WriteLine("2: Name of File");
+                string firstAnswer = Console.ReadLine();
 
-            //ConfigurationManager.AppSettings.Set("Path", path);
+                if (!Int32.TryParse(firstAnswer, out int intFirstAnswer) | (intFirstAnswer > 2 | intFirstAnswer < 1)) 
+                {
+                    Console.Clear();
+                    Console.WriteLine("That's not a valid selection. Please choose again.");
+                    goto FirstLaunch;
+                }
+                switch (intFirstAnswer)
+                {
+                    case 1:
 
-            string pathGeneric;
-
-            pathGeneric = ConfigurationManager.AppSettings.Get("Path");
-
-            string eventsUrl = "http://events.umich.edu/group/1965/rss?v=2&html_output=true";
+                        Console.Clear();
+                        Console.WriteLine("Please enter the path you would like the file saved to.");
+                        Console.WriteLine(@"Ex: c:\Users\Kees Wolterstorff\Desktop\");
+                        string firstEnteredPath = Console.ReadLine();
+                        Console.Clear();
+                        Console.WriteLine("The path you entered was: " + firstEnteredPath);
+                        Console.WriteLine("Are you sure? [Y/N]");
+                        string firstConfirmSetting = Console.ReadLine();
+                        switch (firstConfirmSetting)
+                        {
+                            case "Y":
+                                config.AppSettings.Settings["Path"].Value = firstEnteredPath;
+                                config.Save(ConfigurationSaveMode.Modified);
+                                ConfigurationManager.RefreshSection("appSettings");
+                                goto FirstLaunch;
+                            case "y":
+                                config.AppSettings.Settings["Path"].Value = firstEnteredPath;
+                                config.Save(ConfigurationSaveMode.Modified);
+                                ConfigurationManager.RefreshSection("appSettings");
+                                goto FirstLaunch;
+                            default:
+                                Console.Clear();
+                                Console.WriteLine("Nothing changed. Press enter to continue.");
+                                goto FirstLaunch;
+                        }
+                    case 2:
+                        Console.Clear();
+                        Console.WriteLine("Please enter the filename you would like the document to be saved as.");
+                        string firstEnteredName = Console.ReadLine();
+                        Console.Clear();
+                        Console.WriteLine("The filename you entered was: " + firstEnteredName);
+                        Console.WriteLine("Are you sure? [Y/N]");
+                        firstConfirmSetting = Console.ReadLine();
+                        switch (firstConfirmSetting)
+                        {
+                            case "Y":
+                                config.AppSettings.Settings["Name"].Value = firstEnteredName;
+                                config.Save(ConfigurationSaveMode.Modified);
+                                ConfigurationManager.RefreshSection("appSettings");
+                                goto FirstLaunch;
+                            case "y":
+                                config.AppSettings.Settings["Name"].Value = firstEnteredName;
+                                config.Save(ConfigurationSaveMode.Modified);
+                                ConfigurationManager.RefreshSection("appSettings");
+                                goto FirstLaunch;
+                            default:
+                                Console.Clear();
+                                Console.WriteLine("Nothing changed. Press enter to continue.");
+                                goto FirstLaunch;
+                        }
+                }
+            }
 
             Start:
-
             Console.WriteLine("What would you like to do?");
             Console.WriteLine("1: Run the program");
             Console.WriteLine("2: Modify Settings");
             Console.WriteLine("3: Quit");
             string choice = Console.ReadLine();
             
-            if (!Int32.TryParse(choice, out int value))
+            if (!Int32.TryParse(choice, out int value) | value > 3 | value < 1)
             {
                 Console.Clear();
                 Console.WriteLine("That's not a valid choice.");
@@ -64,16 +134,12 @@ namespace physicsEvents
                 case 3:
                     System.Environment.Exit(0);
                     break;
-                default:
-                    Console.WriteLine("That's not a valid choice.");
-                    goto Start;
             }
 
         StartProgram:
             pathGeneric = ConfigurationManager.AppSettings.Get("Path") + ConfigurationManager.AppSettings.Get("Name") + ".docx";
             Console.Clear();
-            Console.WriteLine(path);
-            Console.WriteLine(pathGeneric);
+            Console.WriteLine("The file will be written to: " + pathGeneric);
             Console.WriteLine("Enter the first date: (M/D)");
             string startDate = Console.ReadLine();
             Console.WriteLine("Enter the last date: (M/D)");
@@ -86,18 +152,21 @@ namespace physicsEvents
                 DateTime EndDate = DateTime.Parse(endDate);
                 if (DateTime.Compare(StartDate, EndDate) > 0)
                 {
-                    throw new Exception("The start date must be prior to the end date.");
+                    Console.Clear();
+                    Console.WriteLine("The start date must be prior to the end date.");
+                    goto StartProgram;
                 }
-            } catch (Exception ex)
+            } catch
             {
-                Console.WriteLine(ex.Message);
+                Console.WriteLine("That's not a valid choice of a Date");
+                goto StartProgram;
             }
 
             Events[] events = Methods.GetEvents(eventsUrl, startDate, endDate);
 
             GenerateWordDocument.Create(events, pathGeneric, DateTime.Parse(startDate), DateTime.Parse(endDate));
             Console.Clear();
-            Console.WriteLine("Successfully generated word document to: " + ConfigurationManager.AppSettings.Get("Path") + ConfigurationManager.AppSettings.Get("Name"));
+            Console.WriteLine("Successfully generated word document to: " + pathGeneric);
             Console.WriteLine("Would you like to continue? [Y/N]");
 
             string finishChoice = Console.ReadLine();
@@ -110,10 +179,7 @@ namespace physicsEvents
                 case "y":
                     Console.Clear();
                     goto Start;
-                case "N":
-                    System.Environment.Exit(0);
-                    break;
-                case "n":
+                default:
                     System.Environment.Exit(0);
                     break;
             }
@@ -128,31 +194,17 @@ namespace physicsEvents
             Console.WriteLine("3: Return");
             string settingsChoice = Console.ReadLine();
 
-            if (Int32.TryParse(settingsChoice, out int valueSettings))
+            if (!Int32.TryParse(settingsChoice, out int valueSettings) | valueSettings < 1 | valueSettings > 3)
             {
-                int intChoice = Convert.ToInt32(choice);
-                if (intChoice < 1 | intChoice > 3)
-                {
-                    Console.Clear();
-                    Console.WriteLine("That's not a valid choice.");
-                    Console.WriteLine();
-                    goto Start;
-                }
-            }
-            else
-            {
+
                 Console.Clear();
                 Console.WriteLine("That's not a valid choice.");
                 Console.WriteLine();
                 goto Start;
             }
 
-            int SettingsChoice = Convert.ToInt32(settingsChoice);
 
-            string confirmSetting;
-            string returnString;
-
-            switch (SettingsChoice)
+            switch (valueSettings)
             {
                 case 1:
                     Console.Clear();
@@ -176,18 +228,12 @@ namespace physicsEvents
                             config.Save(ConfigurationSaveMode.Modified);
                             ConfigurationManager.RefreshSection("appSettings");
                             goto ChangeSettings;
-                        case "N":
-                            Console.Clear();
-                            Console.WriteLine("Nothing changed. Press enter to continue.");
-                            goto ChangeSettings;
-                        case "n":
+                        default:
                             Console.Clear();
                             Console.WriteLine("Nothing changed. Press enter to continue.");
                             goto ChangeSettings;
                     }
-                    goto Start;
                 case 2:
-                    Filename:
                     Console.Clear();
                     Console.WriteLine("Please enter the filename you would like the document to be saved as.");
                     string enteredName = Console.ReadLine();
@@ -208,16 +254,10 @@ namespace physicsEvents
                             config.Save(ConfigurationSaveMode.Modified);
                             ConfigurationManager.RefreshSection("appSettings");
                             goto ChangeSettings;
-                        case "N":
-                            Console.Clear();
-                            Console.WriteLine("Nothing changed. Press enter to continue.");
-                            goto ChangeSettings;
-                        case "n":
-                            Console.Clear();
-                            Console.WriteLine("Nothing changed. Press enter to continue.");
-                            goto ChangeSettings;
                         default:
-                            goto Start;
+                            Console.Clear();
+                            Console.WriteLine("Nothing changed. Press enter to continue.");
+                            goto ChangeSettings;
                     }
                 case 3:
                     Console.Clear();
@@ -226,8 +266,6 @@ namespace physicsEvents
                     System.Environment.Exit(1);
                     break;
             }
-            
-
         }
     }
 }

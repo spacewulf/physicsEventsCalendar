@@ -41,7 +41,6 @@ namespace physicsEvents
                 string endDateSubstrings = endDateString.Substring(0, 2) + ", " + endDateString.Substring(endDateString.Length - 4);
                 stringHeader = stringHeader + endDateSubstrings;
                 Text textHeader = new Text(stringHeader);
-                //Text textHeader = new Text(startDate.ToString("D", CultureInfo.CreateSpecificCulture("en")) + "-" + endDate.ToString("D", CultureInfo.CreateSpecificCulture("en")));
                 runHeader.Append(runPropertiesHeader);
                 runHeader.Append(textHeader);
                 pHeader.Append(pPropertiesHeader);
