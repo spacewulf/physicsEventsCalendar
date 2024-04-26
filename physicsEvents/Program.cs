@@ -161,15 +161,15 @@ namespace physicsEvents
                     string enteredPath = Console.ReadLine();
                     Console.Clear();
                     Console.WriteLine("The path you entered was: " + enteredPath);
+                    Console.WriteLine("Your current path is: " + ConfigurationManager.AppSettings.Get("Path"));
                     Console.WriteLine("Are you sure? [Y/N]");
                     confirmSetting = Console.ReadLine();
                     switch (confirmSetting)
                     {
                         case "Y":
-                            ConfigurationManager.AppSettings.Set("Path", enteredPath);
-                            //config.AppSettings.Settings["Path"].Value = enteredPath;
-                            //config.Save(ConfigurationSaveMode.Modified);
-                            //ConfigurationManager.RefreshSection("appSettings");
+                            config.AppSettings.Settings["Path"].Value = enteredPath;
+                            config.Save(ConfigurationSaveMode.Modified);
+                            ConfigurationManager.RefreshSection("appSettings");
                             goto ChangeSettings;
                         case "y":
                             config.AppSettings.Settings["Path"].Value = enteredPath;
@@ -193,6 +193,7 @@ namespace physicsEvents
                     string enteredName = Console.ReadLine();
                     Console.Clear();
                     Console.WriteLine("The filename you entered was: " + enteredName);
+                    Console.WriteLine("Your current filename is: " + ConfigurationManager.AppSettings.Get("Name"));
                     Console.WriteLine("Are you sure? [Y/N]");
                     confirmSetting = Console.ReadLine();
                     switch (confirmSetting)

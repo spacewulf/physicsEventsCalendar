@@ -15,7 +15,7 @@ namespace physicsEvents
         public static void Create(Events[] events, string path, DateTime startDate, DateTime endDate)
         {
             using (var document = WordprocessingDocument.Create(
-                @"c:\Users\Kees Wolterstorff\Desktop\test.docx", WordprocessingDocumentType.Document))
+                path, WordprocessingDocumentType.Document))
             {
                 document.AddMainDocumentPart();
                 document.MainDocumentPart.Document = new Document(new Body());
@@ -36,7 +36,12 @@ namespace physicsEvents
                 RunProperties runPropertiesHeader = new RunProperties(
                     new RunFonts() { Ascii = "Arial"});
                 runPropertiesHeader.Append(new Bold());
-                Text textHeader = new Text(startDate.ToString("D", CultureInfo.CreateSpecificCulture("en")) + "-" + endDate.ToString("D", CultureInfo.CreateSpecificCulture("en")));
+                string stringHeader = "Physics Seminars and Colloquia ~ " + startDate.ToString("m", CultureInfo.CreateSpecificCulture("en")) + "-";
+                string endDateString = endDate.ToString("d MMM yyyy", CultureInfo.CreateSpecificCulture("en"));
+                string endDateSubstrings = endDateString.Substring(0, 2) + ", " + endDateString.Substring(endDateString.Length - 4);
+                stringHeader = stringHeader + endDateSubstrings;
+                Text textHeader = new Text(stringHeader);
+                //Text textHeader = new Text(startDate.ToString("D", CultureInfo.CreateSpecificCulture("en")) + "-" + endDate.ToString("D", CultureInfo.CreateSpecificCulture("en")));
                 runHeader.Append(runPropertiesHeader);
                 runHeader.Append(textHeader);
                 pHeader.Append(pPropertiesHeader);
@@ -65,7 +70,7 @@ namespace physicsEvents
                         RunProperties runPropertiesDate = new RunProperties(new RunFonts() { Ascii = "Calibri" },
                                                                             new RunStyle { Val = "Hyperlink", },
                                                                             new Underline { Val = UnderlineValues.Single },
-                                                                            new Color { Val = "76ABEE" });
+                                                                            new Color { Val = "00A7FF" });
                         runPropertiesDate.Append(new Bold());
                         Hyperlink dateHyperlink = Methods.HyperlinkManager(e.DateUri.ToString(), document.MainDocumentPart);
                         Text textDate = new Text(e.Date.ToString("D", CultureInfo.CreateSpecificCulture("en")));
@@ -236,7 +241,7 @@ namespace physicsEvents
                         Run runZoomHyperlink = new Run();
                         RunProperties runPropertiesZoomLink = new RunProperties(
                             new RunFonts() { Ascii = "Calibri" },
-                            new Color() { Val = "76ABEE" });
+                            new Color() { Val = "00A7FF" });
                         Text textZoomLink = new(" " + e.Location.Substring(e.Location.IndexOf("https")));
                         textZoomLink.Space = SpaceProcessingModeValues.Preserve;
                         runZoomHyperlink.Append(runPropertiesZoomLink);
