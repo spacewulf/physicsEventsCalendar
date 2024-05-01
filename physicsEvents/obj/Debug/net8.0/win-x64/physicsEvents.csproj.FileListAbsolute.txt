@@ -16,3 +16,12 @@ C:\Users\Kees Wolterstorff\source\repos\physicsEvents\physicsEvents\obj\Debug\ne
 C:\Users\Kees Wolterstorff\source\repos\physicsEvents\physicsEvents\obj\Debug\net8.0\win-x64\physicsEvents.pdb
 C:\Users\Kees Wolterstorff\source\repos\physicsEvents\physicsEvents\obj\Debug\net8.0\win-x64\physicsEvents.genruntimeconfig.cache
 C:\Users\Kees Wolterstorff\source\repos\physicsEvents\physicsEvents\obj\Debug\net8.0\win-x64\ref\physicsEvents.dll
+C:\Users\kjwolter\source\repos\physicsEvents\physicsEvents\obj\Debug\net8.0\win-x64\physicsEvents.csproj.AssemblyReference.cache
+C:\Users\kjwolter\source\repos\physicsEvents\physicsEvents\obj\Debug\net8.0\win-x64\physicsEvents.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\kjwolter\source\repos\physicsEvents\physicsEvents\obj\Debug\net8.0\win-x64\physicsEvents.AssemblyInfoInputs.cache
+C:\Users\kjwolter\source\repos\physicsEvents\physicsEvents\obj\Debug\net8.0\win-x64\physicsEvents.AssemblyInfo.cs
+C:\Users\kjwolter\source\repos\physicsEvents\physicsEvents\obj\Debug\net8.0\win-x64\physicsEvents.csproj.CoreCompileInputs.cache
+C:\Users\kjwolter\source\repos\physicsEvents\physicsEvents\obj\Debug\net8.0\win-x64\physicsEvents.sourcelink.json
+C:\Users\kjwolter\source\repos\physicsEvents\physicsEvents\obj\Debug\net8.0\win-x64\physicsEvents.dll
+C:\Users\kjwolter\source\repos\physicsEvents\physicsEvents\obj\Debug\net8.0\win-x64\refint\physicsEvents.dll
+C:\Users\kjwolter\source\repos\physicsEvents\physicsEvents\obj\Debug\net8.0\win-x64\physicsEvents.pdb

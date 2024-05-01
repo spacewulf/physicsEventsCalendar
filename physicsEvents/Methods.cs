@@ -58,11 +58,9 @@ namespace physicsEvents
             return eventsOutput;
         }
         //Methods used in Program.cs
-        public static Events[] GetEvents(string uri, string startDate, string endDate)
+        public static Events[] GetEvents(string uri, DateTime StartDate, DateTime EndDate)
         {
             Events[] events = CollectEvents(uri);
-            DateTime StartDate = DateTime.Parse(startDate);
-            DateTime EndDate = DateTime.Parse(endDate);
             int checker = 0;
 
             foreach (Events e in events)
@@ -88,6 +86,52 @@ namespace physicsEvents
             }
             return eventsOutput;
 
+        }
+        public static string ReturnMonth(int month)
+        {
+            string output;
+            switch (month)
+            {
+                case 1:
+                    output = "January";
+                    break;
+                case 2:
+                    output = "February";
+                    break;
+                case 3:
+                    output = "March";
+                    break;
+                case 4:
+                    output = "April";
+                    break;
+                case 5:
+                    output = "May";
+                    break;
+                case 6:
+                    output = "June";
+                    break;
+                case 7:
+                    output = "July";
+                    break;
+                case 8:
+                    output = "August";
+                    break;
+                case 9:
+                    output = "September";
+                    break;
+                case 10:
+                    output = "October";
+                    break;
+                case 11:
+                    output = "November";
+                    break;
+                case 12:
+                    output = "December";
+                    break;
+                default:
+                    throw new Exception("Not a valid month.");
+            }
+            return output;
         }
     }
 }

@@ -3,6 +3,7 @@ using DocumentFormat.OpenXml.Packaging;
 using DocumentFormat.OpenXml.Wordprocessing;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Globalization;
 using System.Linq;
 using System.Text;
@@ -17,6 +18,7 @@ namespace physicsEvents
             using (var document = WordprocessingDocument.Create(
                 path, WordprocessingDocumentType.Document))
             {
+                string stringHeaderDates;
                 document.AddMainDocumentPart();
                 document.MainDocumentPart.Document = new Document(new Body());
                 Dictionary<string, bool> days = new Dictionary<string, bool>();
@@ -36,10 +38,18 @@ namespace physicsEvents
                 RunProperties runPropertiesHeader = new RunProperties(
                     new RunFonts() { Ascii = "Arial"});
                 runPropertiesHeader.Append(new Bold());
-                string stringHeader = "Physics Seminars and Colloquia ~ " + startDate.ToString("m", CultureInfo.CreateSpecificCulture("en")) + "-";
-                string endDateString = endDate.ToString("d MMM yyyy", CultureInfo.CreateSpecificCulture("en"));
-                string endDateSubstrings = endDateString.Substring(0, 2) + ", " + endDateString.Substring(endDateString.Length - 4);
-                stringHeader = stringHeader + endDateSubstrings;
+                string stringHeader = "Physics Seminars and Colloquia ~ ";
+                if (startDate.Month == endDate.Month && startDate.Year == endDate.Year)
+                {
+                    stringHeaderDates = Methods.ReturnMonth(startDate.Month) + " " + startDate.Day.ToString() + " - " + endDate.Day.ToString() + ", " + startDate.Year.ToString();
+                }  else if (startDate.Year == endDate.Year && startDate.Month != endDate.Month)
+                {
+                    stringHeaderDates = Methods.ReturnMonth(startDate.Month) + " " + startDate.Day.ToString() + " - " + Methods.ReturnMonth(endDate.Month) + " " + endDate.Day.ToString() + ", " + endDate.Year.ToString();
+                }  else 
+                {
+                    stringHeaderDates = Methods.ReturnMonth(startDate.Month) + " " + startDate.Day.ToString() + ", " + startDate.Year.ToString() + " - " + Methods.ReturnMonth(endDate.Month) + " " + endDate.Day.ToString() + ", " + endDate.Year.ToString();
+                }
+                stringHeader = stringHeader + stringHeaderDates;
                 Text textHeader = new Text(stringHeader);
                 runHeader.Append(runPropertiesHeader);
                 runHeader.Append(textHeader);
@@ -69,7 +79,7 @@ namespace physicsEvents
                         RunProperties runPropertiesDate = new RunProperties(new RunFonts() { Ascii = "Calibri" },
                                                                             new RunStyle { Val = "Hyperlink", },
                                                                             new Underline { Val = UnderlineValues.Single },
-                                                                            new Color { Val = "00A7FF" });
+                                                                            new Color { Val = ConfigurationManager.AppSettings.Get("HyperlinkColor")});
                         runPropertiesDate.Append(new Bold());
                         Hyperlink dateHyperlink = Methods.HyperlinkManager(e.DateUri.ToString(), document.MainDocumentPart);
                         Text textDate = new Text(e.Date.ToString("D", CultureInfo.CreateSpecificCulture("en")));
@@ -240,7 +250,7 @@ namespace physicsEvents
                         Run runZoomHyperlink = new Run();
                         RunProperties runPropertiesZoomLink = new RunProperties(
                             new RunFonts() { Ascii = "Calibri" },
-                            new Color() { Val = "00A7FF" });
+                            new Color() { Val = ConfigurationManager.AppSettings.Get("HyperlinkColor")});
                         Text textZoomLink = new(" " + e.Location.Substring(e.Location.IndexOf("https")));
                         textZoomLink.Space = SpaceProcessingModeValues.Preserve;
                         runZoomHyperlink.Append(runPropertiesZoomLink);
