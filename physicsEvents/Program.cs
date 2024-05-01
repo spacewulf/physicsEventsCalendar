@@ -154,11 +154,13 @@ namespace physicsEvents
                 {
                     Console.Clear();
                     Console.WriteLine("The start date must be prior to the end date.");
+                    Console.ReadLine();
                     goto StartProgram;
                 }
             } catch
             {
                 Console.WriteLine("That's not a valid choice of a Date");
+                Console.ReadLine();
                 goto StartProgram;
             }
 
@@ -199,7 +201,7 @@ namespace physicsEvents
 
                 Console.Clear();
                 Console.WriteLine("That's not a valid choice.");
-                Console.WriteLine();
+                Console.ReadLine();
                 goto Start;
             }
 
