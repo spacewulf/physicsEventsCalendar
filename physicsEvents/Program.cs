@@ -28,6 +28,11 @@ namespace physicsEvents
             string pathGeneric;
             string eventsUrl = "http://events.umich.edu/group/1965/rss?v=2&html_output=true";
 
+            if (string.IsNullOrEmpty(ConfigurationManager.AppSettings.Get("FirstLaunch")))
+            {
+                Methods.GenerateConfigFile();
+            }
+
             Configuration config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
 
             if (ConfigurationManager.AppSettings.Get("FirstLaunch") == "true")

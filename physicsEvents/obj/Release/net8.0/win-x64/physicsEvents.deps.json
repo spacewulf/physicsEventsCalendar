@@ -10,7 +10,7 @@
       "physicsEvents/1.0.0": {
         "dependencies": {
           "DocumentFormat.OpenXml": "3.0.2",
-          "HtmlAgilityPack": "1.11.59",
+          "HtmlAgilityPack": "1.11.61",
           "Microsoft.NET.ILLink.Tasks": "8.0.4",
           "System.Configuration.ConfigurationManager": "8.0.0",
           "System.ServiceModel.Syndication": "8.0.0",
@@ -720,11 +720,11 @@
           }
         }
       },
-      "HtmlAgilityPack/1.11.59": {
+      "HtmlAgilityPack/1.11.61": {
         "runtime": {
           "lib/netstandard2.0/HtmlAgilityPack.dll": {
-            "assemblyVersion": "1.11.59.0",
-            "fileVersion": "1.11.59.0"
+            "assemblyVersion": "1.11.61.0",
+            "fileVersion": "1.11.61.0"
           }
         }
       },
@@ -820,12 +820,12 @@
       "path": "documentformat.openxml.framework/3.0.2",
       "hashPath": "documentformat.openxml.framework.3.0.2.nupkg.sha512"
     },
-    "HtmlAgilityPack/1.11.59": {
+    "HtmlAgilityPack/1.11.61": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-0tMaGzTJ5uFFMCYvprZ4hRYg6Dm5E+/WeMFJiD5K83Fe/Y6kyLaRKcfrfUwfb1j428XzB4/2RR7sdxoQX5eaEA==",
-      "path": "htmlagilitypack/1.11.59",
-      "hashPath": "htmlagilitypack.1.11.59.nupkg.sha512"
+      "sha512": "sha512-hqZASeEFHS9quHvfZSwaULoAJLWkOYVPiQjc3P9J4pQS8vSYzrP3bxe04Vm7vYYuxwbQhq9hCSVvZVLTyRaNaQ==",
+      "path": "htmlagilitypack/1.11.61",
+      "hashPath": "htmlagilitypack.1.11.61.nupkg.sha512"
     },
     "Microsoft.NET.ILLink.Tasks/8.0.4": {
       "type": "package",

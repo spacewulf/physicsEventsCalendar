@@ -1,0 +1,3 @@
+C:\Users\Kees Wolterstorff\Desktop\Publish\physicsEvents.pdb
+C:\Users\Kees Wolterstorff\Desktop\Publish\physicsEvents.dll.config
+C:\Users\Kees Wolterstorff\Desktop\Publish\physicsEvents.exe

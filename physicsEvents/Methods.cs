@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.ServiceModel.Syndication;
 using System.Xml;
+using System.IO;
 using HtmlAgilityPack;
 using System.Net.NetworkInformation;
 using System.Globalization;
@@ -13,6 +14,8 @@ using DocumentFormat.OpenXml;
 using DocumentFormat.OpenXml.Packaging;
 using DocumentFormat.OpenXml.Wordprocessing;
 using System.Text.RegularExpressions;
+using System.Configuration;
+using DocumentFormat.OpenXml.Bibliography;
 
 namespace physicsEvents
 {
@@ -86,6 +89,57 @@ namespace physicsEvents
             }
             return eventsOutput;
 
+        }
+
+        public static bool CheckConfig()
+        {
+            try
+            {
+                ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
+                ConfigurationManager.AppSettings.Get("FirstLaunch");
+            } catch (ConfigurationErrorsException)
+            {
+                return false;
+            }
+            return true;
+        }
+        public static async void GenerateConfigFile()
+        {
+            XmlWriter writer = null;
+
+            try
+            {
+                XmlWriterSettings settings = new XmlWriterSettings();
+                settings.Indent = true;
+                settings.IndentChars = ("\t");
+                settings.OmitXmlDeclaration = false;
+
+                writer = XmlWriter.Create("physicsEvents.dll.config", settings);
+                writer.WriteStartElement("configuration");
+                writer.WriteStartElement("appSettings");
+
+                string[,] keyPairs = { { "FirstLaunch", "true" }, { "Path", "" }, { "DynamicNaming", "true" }, { "Name", "" }, { "HyperlinkColor", "0057E4" } };
+
+                for (int i = 0; i < keyPairs.GetLength(0); i++)
+                {
+                    WriteKeyValuePair(writer, [keyPairs[i, 0], keyPairs[i, 1]]);
+                }
+
+                writer.Flush();
+            }
+            finally
+            {
+                if (writer != null)
+                    writer.Close();
+            }
+
+        }
+        public static void WriteKeyValuePair(XmlWriter writer, string[] keyValuePair)
+        {
+            writer.WriteStartElement("add");
+            writer.WriteAttributeString("key", keyValuePair[0]);
+            writer.WriteAttributeString("value", keyValuePair[1]);
+            writer.WriteEndElement();
         }
         public static string ReturnMonth(int month)
         {
