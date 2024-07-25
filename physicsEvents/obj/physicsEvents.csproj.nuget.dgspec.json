@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Kees Wolterstorff\\source\\repos\\spacewulf\\physicsEvents\\physicsEvents\\physicsEvents.csproj": {}
+    "C:\\Users\\Kees Wolterstorff\\Source\\Repos\\physicsEventsCalendar\\physicsEvents\\physicsEvents.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Kees Wolterstorff\\source\\repos\\spacewulf\\physicsEvents\\physicsEvents\\physicsEvents.csproj": {
+    "C:\\Users\\Kees Wolterstorff\\Source\\Repos\\physicsEventsCalendar\\physicsEvents\\physicsEvents.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Kees Wolterstorff\\source\\repos\\spacewulf\\physicsEvents\\physicsEvents\\physicsEvents.csproj",
+        "projectUniqueName": "C:\\Users\\Kees Wolterstorff\\Source\\Repos\\physicsEventsCalendar\\physicsEvents\\physicsEvents.csproj",
         "projectName": "physicsEvents",
-        "projectPath": "C:\\Users\\Kees Wolterstorff\\source\\repos\\spacewulf\\physicsEvents\\physicsEvents\\physicsEvents.csproj",
+        "projectPath": "C:\\Users\\Kees Wolterstorff\\Source\\Repos\\physicsEventsCalendar\\physicsEvents\\physicsEvents.csproj",
         "packagesPath": "C:\\Users\\Kees Wolterstorff\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Kees Wolterstorff\\source\\repos\\spacewulf\\physicsEvents\\physicsEvents\\obj\\",
+        "outputPath": "C:\\Users\\Kees Wolterstorff\\Source\\Repos\\physicsEventsCalendar\\physicsEvents\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

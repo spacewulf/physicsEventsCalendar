@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "MyT3H1D2o61uzDa71s5Pg3gWB0Vj8d7ig39e6Q8CeUm9NhsVHE1tnaTAyXgBHZkMaKNSO9L8WUWSAg05jxECLQ==",
+  "dgSpecHash": "rhHm7LfihMpdIBXpZmmUqjD+DeWq/dZDOL+uTOcFMBYFv4as8sUm10ARDzROXN2PfXKtJ6FfOwlB1KNe57EaNg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Kees Wolterstorff\\source\\repos\\spacewulf\\physicsEvents\\physicsEvents\\physicsEvents.csproj",
+  "projectFilePath": "C:\\Users\\Kees Wolterstorff\\Source\\Repos\\physicsEventsCalendar\\physicsEvents\\physicsEvents.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Kees Wolterstorff\\.nuget\\packages\\documentformat.openxml\\3.0.2\\documentformat.openxml.3.0.2.nupkg.sha512",
     "C:\\Users\\Kees Wolterstorff\\.nuget\\packages\\documentformat.openxml.framework\\3.0.2\\documentformat.openxml.framework.3.0.2.nupkg.sha512",
