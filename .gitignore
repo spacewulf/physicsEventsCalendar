@@ -6,6 +6,7 @@
 **/bin/Debug
 **/bin/Release
 **/bin/
-**/physicsEvents/Debug
-**/physicsEvents/publish
-**/physicsEvents/Release
+**/physicsEvents/obj/Debug
+**/physicsEvents/obj/publish
+**/physicsEvents/obj/Release
+
