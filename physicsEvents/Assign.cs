@@ -1,4 +1,4 @@
-﻿using physicsEvents;
+﻿using physicsEventsCalendar;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,7 +14,7 @@ using DocumentFormat.OpenXml.Packaging;
 using DocumentFormat.OpenXml.Wordprocessing;
 using System.Text.RegularExpressions;
 
-namespace physicsEvents
+namespace physicsEventsCalendar
 {
     internal class Assign
     {
@@ -88,6 +88,15 @@ namespace physicsEvents
                 } else { e.IsLivestreamed = false;}
                 iter++;
             }
+            return events;
+        }
+        public static Events[] Organization(Events[] events)
+        {
+            for (int i = 0; i < events.Length; i++)
+            {
+                events[i].Organization = Methods.Organization(events[i].Title);
+            }
+
             return events;
         }
     }

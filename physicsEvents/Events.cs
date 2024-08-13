@@ -7,11 +7,12 @@ using System.Security.Policy;
 using System.Collections.ObjectModel;
 using System.ServiceModel.Syndication;
 
-namespace physicsEvents
+namespace physicsEventsCalendar
 {
     public class Events
     {
         private string title;
+        private string organization;
         public string summary;
         private string speaker;
         private string location;
@@ -33,6 +34,16 @@ namespace physicsEvents
                 if (title == value)
                     return;
                 title = value;
+            }
+        }
+        public string Organization
+        {
+            get { return organization; }
+            set
+            {
+                if (organization == value)
+                    return;
+                organization = value;
             }
         }
         public string Summary

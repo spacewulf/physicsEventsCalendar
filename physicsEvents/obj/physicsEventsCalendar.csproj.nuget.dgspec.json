@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Kees Wolterstorff\\source\\repos\\physicsEventsCalendar\\physicsEvents\\physicsEvents.csproj": {}
+    "C:\\Users\\Kees Wolterstorff\\source\\repos\\physicsEventsCalendar\\physicsEvents\\physicsEventsCalendar.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Kees Wolterstorff\\source\\repos\\physicsEventsCalendar\\physicsEvents\\physicsEvents.csproj": {
+    "C:\\Users\\Kees Wolterstorff\\source\\repos\\physicsEventsCalendar\\physicsEvents\\physicsEventsCalendar.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Kees Wolterstorff\\source\\repos\\physicsEventsCalendar\\physicsEvents\\physicsEvents.csproj",
-        "projectName": "physicsEvents",
-        "projectPath": "C:\\Users\\Kees Wolterstorff\\source\\repos\\physicsEventsCalendar\\physicsEvents\\physicsEvents.csproj",
+        "projectUniqueName": "C:\\Users\\Kees Wolterstorff\\source\\repos\\physicsEventsCalendar\\physicsEvents\\physicsEventsCalendar.csproj",
+        "projectName": "physicsEventsCalendar",
+        "projectPath": "C:\\Users\\Kees Wolterstorff\\source\\repos\\physicsEventsCalendar\\physicsEvents\\physicsEventsCalendar.csproj",
         "packagesPath": "C:\\Users\\Kees Wolterstorff\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Kees Wolterstorff\\Source\\Repos\\physicsEventsCalendar\\physicsEvents\\obj\\",
+        "outputPath": "C:\\Users\\Kees Wolterstorff\\source\\repos\\physicsEventsCalendar\\physicsEvents\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -50,9 +50,9 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "dependencies": {
-            "DocumentFormat.OpenXml": {
+            "Google.Apis.Calendar.v3": {
               "target": "Package",
-              "version": "[3.0.2, )"
+              "version": "[1.68.0.3473, )"
             },
             "HtmlAgilityPack": {
               "target": "Package",

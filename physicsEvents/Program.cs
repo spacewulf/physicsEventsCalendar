@@ -1,4 +1,4 @@
-﻿using physicsEvents;
+﻿using physicsEventsCalendar;
 using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
@@ -15,10 +15,9 @@ using System.Runtime.InteropServices;
 using System.Text.RegularExpressions;
 using System.IO;
 using System.Globalization;
-using DocumentFormat.OpenXml.Wordprocessing;
 
 
-namespace physicsEvents
+namespace physicsEventsCalendar
 {
     public class Program
     {
@@ -218,7 +217,6 @@ namespace physicsEvents
 
             Events[] events = Methods.GetEvents(eventsUrl, StartDate, EndDate);
 
-            GenerateWordDocument.Create(events, pathGeneric, StartDate, EndDate);
             Console.Clear();
             Console.WriteLine("Successfully generated word document to: " + pathGeneric);
             Console.WriteLine("Would you like to continue? [Y/N]");
