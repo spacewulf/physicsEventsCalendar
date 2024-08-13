@@ -9,19 +9,16 @@ using System.Xml;
 using HtmlAgilityPack;
 using System.Net.NetworkInformation;
 using System.Globalization;
-using DocumentFormat.OpenXml;
-using DocumentFormat.OpenXml.Packaging;
-using DocumentFormat.OpenXml.Wordprocessing;
 using System.Text.RegularExpressions;
 
 namespace physicsEventsCalendar
 {
     internal class Assign
     {
-        public static Events[] Date(Events[] events, string[] bodies)
+        public static PhysicsEvents[] Date(PhysicsEvents[] events, string[] bodies)
         {
             int iter = 0;
-            foreach (Events e in events)
+            foreach (PhysicsEvents e in events)
             {
                 string[] dates = Fetch.Date(bodies[iter]);
                 string date = dates[0].Substring(0, dates[0].IndexOf("T"));
@@ -43,10 +40,20 @@ namespace physicsEventsCalendar
             }
             return events;
         }
-        public static Events[] SpeakerName(Events[] events, string[] bodies)
+        public static PhysicsEvents[] GroupId(PhysicsEvents[] events, string[] bodies)
         {
             int iter = 0;
-            foreach (Events e in events)
+            foreach (PhysicsEvents e in events)
+            {
+                e.GroupId = Fetch.GroupId(bodies[iter]);
+                ++iter;
+            }
+            return events;
+        }
+        public static PhysicsEvents[] SpeakerName(PhysicsEvents[] events, string[] bodies)
+        {
+            int iter = 0;
+            foreach (PhysicsEvents e in events)
             {
                 e.Speaker = Fetch.SpeakerName(bodies[iter]);
                 iter++;
@@ -54,10 +61,10 @@ namespace physicsEventsCalendar
             return events;
         }
 
-        public static Events[] EventUri(Events[] events, string[] bodies)
+        public static PhysicsEvents[] EventUri(PhysicsEvents[] events, string[] bodies)
         {
             int iter = 0;
-            foreach (Events e in events)
+            foreach (PhysicsEvents e in events)
             {
                 e.Uri = Fetch.EventUri(bodies[iter]);
                 iter++;
@@ -65,10 +72,21 @@ namespace physicsEventsCalendar
             return events;
         }
 
-        public static Events[] Location(Events[] events, string[] bodies)
+        public static PhysicsEvents[] EventId(PhysicsEvents[] events, string[] bodies)
         {
             int iter = 0;
-            foreach (Events e in events)
+            foreach(PhysicsEvents e in events)
+            {
+                e.EventId = Fetch.EventId(bodies[iter]);
+                iter++;
+            }
+            return events;
+        }
+
+        public static PhysicsEvents[] Location(PhysicsEvents[] events, string[] bodies)
+        {
+            int iter = 0;
+            foreach (PhysicsEvents e in events)
             {
                 e.Location = Fetch.Location(bodies[iter]);
                 iter++;
@@ -76,10 +94,10 @@ namespace physicsEventsCalendar
             return events;
         }
 
-        public static Events[] Streamed(Events[] events, string[] bodies)
+        public static PhysicsEvents[] Streamed(PhysicsEvents[] events, string[] bodies)
         {
             int iter = 0;
-            foreach (Events e in events)
+            foreach (PhysicsEvents e in events)
             {
                 int count = Regex.Matches(bodies[iter], "livestream").Count;
                 if ((bodies[iter].IndexOf("live stream", StringComparison.OrdinalIgnoreCase) >= 0) | count > 9)
@@ -90,13 +108,20 @@ namespace physicsEventsCalendar
             }
             return events;
         }
-        public static Events[] Organization(Events[] events)
+        /*public static PhysicsEvents[] Organization(PhysicsEvents[] events)
         {
-            for (int i = 0; i < events.Length; i++)
+            foreach (PhysicsEvents e in events)
             {
-                events[i].Organization = Methods.Organization(events[i].Title);
+                e.Organization = Methods.Organization(e.Title);
             }
-
+            return events;
+        }*/
+        public static PhysicsEvents[] Title(PhysicsEvents[] events)
+        {
+            foreach (PhysicsEvents e in events)
+            {
+                e.Title = e.Title + " | " + e.Speaker;
+            }
             return events;
         }
     }

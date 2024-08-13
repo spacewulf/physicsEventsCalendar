@@ -54,12 +54,12 @@ namespace physicsEventsCalendar
             string[] bodies = HtmlText(pages);
             return bodies;
         }
-        public static Uri FetchUri(Events Event)
+        public static Uri FetchUri(PhysicsEvents Event)
         {
             return Event.Uri;
         }
 
-        public static Uri[] Uri(Events[] events)
+        public static Uri[] Uri(PhysicsEvents[] events)
         {
             Uri[] uris = new Uri[events.Length];
             for (int i = 0; i < events.Length; i++)
@@ -69,7 +69,7 @@ namespace physicsEventsCalendar
             return uris;
         }
 
-        public static Events[] Events(string url)
+        public static PhysicsEvents[] Events(string url)
         {
 
             XmlReader reader = XmlReader.Create(url);
@@ -82,11 +82,11 @@ namespace physicsEventsCalendar
 
             int eventIter = 0;
 
-            Events[] events = new Events[size];
+            PhysicsEvents[] events = new PhysicsEvents[size];
 
             foreach (SyndicationItem item in feed.Items)
             {
-                Events Event = new Events();
+                PhysicsEvents Event = new PhysicsEvents();
                 Event.Title = item.Title.Text.ToString().Substring(0, item.Title.Text.ToString().IndexOf("("));
                 Event.Uri = item.Links[0].Uri;
                 events[eventIter] = Event;
@@ -94,6 +94,12 @@ namespace physicsEventsCalendar
             }
 
             return events;
+        }
+        public static int GroupId(string input)
+        {
+            int startIndex = input.IndexOf("/group/") + 7;
+            int output = Int32.Parse(input.Substring(startIndex, 4));
+            return output;
         }
         public static string[] Date(string input)
         {
@@ -120,6 +126,14 @@ namespace physicsEventsCalendar
             int eventsIndex = input.IndexOf(@"""iCal_href"": ");
             string uriSubstring = input.Substring(eventsIndex, 36).Substring(21, 15);
             return new System.Uri("https://lsa.umich.edu/physics/news-events/all-events.detail.html/" + uriSubstring + ".html"); //This must be changed when moving to a different department
+        }
+        public static int EventId(string input)
+        {
+            int eventsIndex = input.IndexOf(@"""iCal_href"": ");
+
+            Int32.TryParse(input.Substring(eventsIndex, 36).Substring(21, 15), out int result);
+
+            return result;
         }
         public static string SpeakerName(string input)
         {
@@ -156,7 +170,7 @@ namespace physicsEventsCalendar
         }
         public static string[] BodyText(string eventsUri)
         {
-            Events[] events = Events(eventsUri);
+            PhysicsEvents[] events = Events(eventsUri);
 
             Uri[] uris = Uri(events);
 
@@ -165,10 +179,10 @@ namespace physicsEventsCalendar
             return bodies;
         }
 
-        public static Events[] AssignStreamed(Events[] events, string[] bodies)
+        public static PhysicsEvents[] AssignStreamed(PhysicsEvents[] events, string[] bodies)
         {
             int iter = 0;
-            foreach (Events e in events)
+            foreach (PhysicsEvents e in events)
             {
                 int count = Regex.Matches(bodies[iter], "livestream").Count;
                 if ((bodies[iter].IndexOf("live stream", StringComparison.OrdinalIgnoreCase) >= 0) | count > 9)

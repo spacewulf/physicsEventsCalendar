@@ -9,7 +9,7 @@ using System.ServiceModel.Syndication;
 
 namespace physicsEventsCalendar
 {
-    public class Events
+    public class PhysicsEvents
     {
         private string title;
         private string organization;
@@ -22,6 +22,8 @@ namespace physicsEventsCalendar
         private Uri uri;
         private Uri dateUri;
         private bool isLivestreamed;
+        private int eventId;
+        private int groupId;
         public string Title
         // {
         //     get { return title; }
@@ -157,6 +159,27 @@ namespace physicsEventsCalendar
                 if (isLivestreamed == value)
                     return;
                 isLivestreamed = value;
+            }
+        }
+
+        public int EventId
+        {
+            get { return eventId; }
+            set
+            {
+                if (eventId == value)
+                    return;
+                eventId = value;
+            }
+        }
+        public int GroupId
+        {
+            get { return groupId; }
+            set
+            {
+                if (groupId == value)
+                    return;
+                groupId = value;
             }
         }
     }
